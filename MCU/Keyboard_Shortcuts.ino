@@ -1,3 +1,4 @@
+// Attiny85
 #include "DigiKeyboard.h"
 int sure = 1000;
 void setup() {
