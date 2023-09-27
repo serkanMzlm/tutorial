@@ -1,16 +1,24 @@
 ## ROS2 HUMBLE
-- Baket Oluşturma: `--dependencies` kısmından sonra yazılan paketler sisteme eklenmesi sağlanır. 
+
+#### Paket Oluşturma
+- Baket Oluşturma: `--dependencies` kısmından sonra yazılan paketler sisteme eklenmesi sağlanır. (cmake ve xml dosyasına)
     - `RCL` Ros Client Library.
 ```
-ros2 pkg create --build-type  ament_cmake  cpp_node --dependencies rclcpp
-ros2 pkg create --build-type  ament_python cpp_node --dependencies rclpy
+ros2 pkg create --build-type  ament_cmake  cpp_node
+ros2 pkg create --build-type  ament_cmake  cpp_node --dependencies rclcpp  (cpp)
+ros2 pkg create --build-type  ament_python cpp_node --dependencies rclpy   (py)
+
+(Paketin altında bir executable dosya oluşturur.)
+ros2 pkg create --build-type ament_cmake  --node-name [node_name] [pkg_name] 
+ros2 pkg create --build-type ament_python --node-name [node_name] [pkg_name]
 ```
-- Kodlarda yazılan `RCLCPP_DEBUG` kısımları sadece parametre olarak bu kısımların gözükmesini istediğinizde ekranda görüntülenir.
-- `--log-level debug` hangi tür çıktının alınmasını istediğimizi belirtiriz. (debug, info, error, warn)
 ```
-ros2 run [pkg] [executable_file] --ros-args --log-level debug      (Bütün pakette bulunan)
-ros2 run [pkg] [executable_file] --ros-args --log-level [node_name]:=debug  (Sadece belirli bir node)
+(Belirtilen paketin executable dosyalarını gösterir.)
+ros2 pkg executables [package_name] 
+(Aktif paketleri gösterir.)
+ros2 pkg list
 ```
+
 #### Build & Colcon
 - ROS2 build yaparken kullanılan `colcon build` default olarak **makefiles** kullanılır. Build işlemini değiştirmek için CMake dosyasına parametre verilebilir. `colcon build --cmake-args -G Ninja  --packages-select cpp_topic`
 - ROS2 build dosyası oluşturulurken release modunda oluşur. Bu modu değiştirmek hataları daha iyi görebilmek için `RelWithDebInfo` moduna alınabilir. `colcon build --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo`
@@ -23,6 +31,27 @@ colcon build --symlink-install  (Direkt paketlerin içinde bulunan dosyaları ta
 colcon build --packages-skip-build-finished  (daha önceden build edilip bitmiş paketleri atlar.)
 
 colcon graph    (Paketler arasında bağımlılıkları gösterir.)
+```
+#### Run
+```
+. /opt/ros/humble/setup.bash 
+source /opt/ros/humble/setup.bash                               (source veya . kullanılabilir.)
+source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash    (colcon build parametrelerini ekranda görme)
+rosdep install -i --from-path src --rosdistro humble -y         (eksik paketlerin kontrol eder.)
+```
+```
+ros2 run [pkg_name] [executable_name]
+ros2 launch [pkg_name] [launch_name]
+ros2 run demo_odes_cpp talker --ros-args -remap __node:=new_talker
+ros2 run [pkg_name] [ex_name] -r [topic_name]:=new_topic_name
+ros2 run [pkg_name] [ex_name] -r __node:=new_node -r [topic_name]:=new_topic
+ros2 run [pkg_name] [ex_name] -r [service_name]:=new_service
+```
+- Kodlarda yazılan `RCLCPP_DEBUG` kısımları sadece parametre olarak bu kısımların gözükmesini istediğinizde ekranda görüntülenir.
+- `--log-level debug` hangi tür çıktının alınmasını istediğimizi belirtiriz. (debug, info, error, warn)
+```
+ros2 run [pkg] [executable_file] --ros-args --log-level debug      (Bütün pakette bulunan)
+ros2 run [pkg] [executable_file] --ros-args --log-level [node_name]:=debug  (Sadece belirli bir node)
 ```
 
 ### VS Code 
@@ -70,14 +99,21 @@ Belirli komutların sürekli girmek yerine bu işlemi **vs code** sayesinde kola
 #### ROS Extension
 `ctrl+shift+p` kısayolları kullanılıp **ROS** yazılır.
 
+---
 
+```
+rqt
+rqt_graph
+```
 
+---
 - ROS2'da kullandığımız `RCLCPP_DEBUG, RCLCPP_INFO, RCLCPP_WARN, RCLCPP_ERROR` komut çıktılarını ekranda görürken aynı zamanda bilgisayarda `~/.ros/log` klasörünede yazılır.
 - `COLCON_PREFIX_PATH, CMAKE_PREFIX_PATH` ve `AMENT_PREFIX_PATH` bu değişkenleri **setup.bash** çalıştırılınca doldurulur. Bu değişkenlerin içi boşaltılması için `export CMAKE_PREFIX_PATH=` şeklinde boşaltılabilir.
 
 **DDS:** ROS2'nun iletişim katmanıdır. ROS2'da çihazlar birbirini görmesi için çihazların **domain ID** kısımları aynı olmasıdır.( default = 0) Linux işletim sisteminde **domain ID** için güvenli aralık 0-101'dir bu aralığın olma sebebi diğer aralıklarda linux aktif bir port kullanıyor olabilir. Domain ID değiştirmek için `export ROS_DOMAIN_ID=9`komutu girilir.
 ```
-cat /proc/sys/net/ipv4/ip_local_port_range (Linux işletim sisteminde hangi aralıkta port acılabileceği. Max-Min)
+(Linux işletim sisteminde hangi aralıkta port acılabileceği. Max-Min)
+cat /proc/sys/net/ipv4/ip_local_port_range 
 ```
 
 **Local Host:** ROS2 paketlerinin ağda gözükmesini engeller. Sadece cihaz içinde bulunan paketlerin birbirini görmesini sağlar. `export ROS_LOCALHOST_ONLY=1 `
