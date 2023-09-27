@@ -6,10 +6,25 @@ ros2 pkg create --build-type  ament_cmake  cpp_node --dependencies rclcpp
 ros2 pkg create --build-type  ament_python cpp_node --dependencies rclpy
 ```
 - Kodlarda yazılan `RCLCPP_DEBUG` kısımları sadece parametre olarak bu kısımların gözükmesini istediğinizde ekranda görüntülenir.
+- `--log-level debug` hangi tür çıktının alınmasını istediğimizi belirtiriz. (debug, info, error, warn)
 ```
 ros2 run [pkg] [executable_file] --ros-args --log-level debug      (Bütün pakette bulunan)
 ros2 run [pkg] [executable_file] --ros-args --log-level [node_name]:=debug  (Sadece belirli bir node)
 ```
+#### Build & Colcon
+- ROS2 build yaparken kullanılan `colcon build` default olarak **makefiles** kullanılır. Build işlemini değiştirmek için CMake dosyasına parametre verilebilir. `colcon build --cmake-args -G Ninja  --packages-select cpp_topic`
+- ROS2 build dosyası oluşturulurken release modunda oluşur. Bu modu değiştirmek hataları daha iyi görebilmek için `RelWithDebInfo` moduna alınabilir. `colcon build --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo`
+- `symlink-install` yapmak **cpp** için pek bir anlam ifade etmez çünkü executable dosya build edilmeden yeni yazılan kodlar çalışmıyıcaktır. **Python**'da ise dosyada yaptığımız değişiklikler doğrudan çalışmasını etkiliyecektir. (**cpp** tarafında launch ve param dosyaları için kullanılabilir.)
+```
+colcon build     (Alt dizinlerde bulunan bütün CMakeLists dosyalarını bulup derler.)
+colcon build --packages-select [pkg_name]  (Sadece belirtilen bir paketi build eder.)
+colcon build --packages-skip [pkg_name]    (Belirtilen paketleri atlar.)
+colcon build --symlink-install  (Direkt paketlerin içinde bulunan dosyaları taşımak yerine link yapılması sağlanır.)
+colcon build --packages-skip-build-finished  (daha önceden build edilip bitmiş paketleri atlar.)
+
+colcon graph    (Paketler arasında bağımlılıkları gösterir.)
+```
+
 ### VS Code 
 #### Debug
 Paketlerde bulunan hataları daha rahat analiz edilmesi için **vs code** üzerinden ROS2 debug yapılabilir.
@@ -66,3 +81,9 @@ cat /proc/sys/net/ipv4/ip_local_port_range (Linux işletim sisteminde hangi aral
 ```
 
 **Local Host:** ROS2 paketlerinin ağda gözükmesini engeller. Sadece cihaz içinde bulunan paketlerin birbirini görmesini sağlar. `export ROS_LOCALHOST_ONLY=1 `
+
+
+---
+- https://docs.ros2.org/latest/api/rclcpp/
+- https://index.ros.org/packages/
+- https://github.com/ros2/launch
