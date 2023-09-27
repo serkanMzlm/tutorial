@@ -13,14 +13,21 @@ find_package(rclcpp REQUIRED)
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
 add_executable(publisher_node src/publisher.cpp)
+add_executable(subscriber_node src/subscriber.cpp)
 
 ament_target_dependencies(publisher_node 
   rclcpp
   std_msgs
 )
 
+ament_target_dependencies(subscriber_node 
+  rclcpp
+  std_msgs
+)
+
 install(TARGETS
   publisher_node
+  subscriber_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
