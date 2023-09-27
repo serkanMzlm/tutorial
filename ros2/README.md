@@ -10,4 +10,59 @@ ros2 pkg create --build-type  ament_python cpp_node --dependencies rclpy
 ros2 run [pkg] [executable_file] --ros-args --log-level debug      (Bütün pakette bulunan)
 ros2 run [pkg] [executable_file] --ros-args --log-level [node_name]:=debug  (Sadece belirli bir node)
 ```
+### VS Code 
+#### Debug
+Paketlerde bulunan hataları daha rahat analiz edilmesi için **vs code** üzerinden ROS2 debug yapılabilir.
+    - `colcon build --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo`  paketlerin runtime sırasında karşılaşına hataların daha rahat anlaşılmasını sağlar.
+    - ROS2 paketini vs code ile runtime sırasında erişmek için belirli bir port üzerine yayın açmamız lazım bunu `ros2 run --prefix "gdbserver localhost:2000" [pkg_name] [node_name]` şeklinde sağlarız. (gdbserver yüklü değilse `sudo apt install gdbserver` komutu ile yüklenir.)
+    - VS code üzerinden `launch.json` dosyasının içine belirtilen porta dinleme yapılacağı belirtilmelidir. Paket çalıştırılınca VS code debug moduna geçer ve hata ayıklamaya başlar.
+
+
+    {
+    "version": "0.2.0",
+    "configurations":[
+            {
+                "name":"C++ Debugger",
+                "request": "launch",
+                "miDebuggerServerAddress":"localhost:2000",
+                "cwd": "/",
+                "program": "~/ex_ros/install/ex_1" 
+            }
+        ]
+    }
+
+
+#### Sürekli Tekrarlanan Kodları JSON Dosyasına Yaptıma
+Belirli komutların sürekli girmek yerine bu işlemi **vs code** sayesinde kolaylaştırılabilir. VS code bulunan **tasks.json** dosyası vs code tarafından yapılandırma sağlamak için kullanılır. Örneğin derleme, test etme, paketleme gibi görevleri tanımlayabiliriz. Birden fala görev yapılabilir otomatik olarak en son çalıştırılan çalışır. `launch.json` dosyası ise  uygulamayı debug yapabilmek için gerekli ayarların yapılmasını sağlar. Birden fala görev yapılabilir otomatik olarak en son çalıştırılan çalışır.
+    - `Terminal > run build task` kısmında çalıştırılır.
+
+    {
+    "version": "2.0.0",
+    "tasks":[
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "source /opt/ros/humble/setup.bash && colcon build  --symlink-install"
+        } ,
+        {
+            "label": "debug",
+            "type": "shell",
+            "command": "source /opt/ros/humble/setup.bash && colcon build  --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo"
+        } 
+        ]
+    }
+
+#### ROS Extension
+`ctrl+shift+p` kısayolları kullanılıp **ROS** yazılır.
+
+
+
 - ROS2'da kullandığımız `RCLCPP_DEBUG, RCLCPP_INFO, RCLCPP_WARN, RCLCPP_ERROR` komut çıktılarını ekranda görürken aynı zamanda bilgisayarda `~/.ros/log` klasörünede yazılır.
+- `COLCON_PREFIX_PATH, CMAKE_PREFIX_PATH` ve `AMENT_PREFIX_PATH` bu değişkenleri **setup.bash** çalıştırılınca doldurulur. Bu değişkenlerin içi boşaltılması için `export CMAKE_PREFIX_PATH=` şeklinde boşaltılabilir.
+
+**DDS:** ROS2'nun iletişim katmanıdır. ROS2'da çihazlar birbirini görmesi için çihazların **domain ID** kısımları aynı olmasıdır.( default = 0) Linux işletim sisteminde **domain ID** için güvenli aralık 0-101'dir bu aralığın olma sebebi diğer aralıklarda linux aktif bir port kullanıyor olabilir. Domain ID değiştirmek için `export ROS_DOMAIN_ID=9`komutu girilir.
+```
+cat /proc/sys/net/ipv4/ip_local_port_range (Linux işletim sisteminde hangi aralıkta port acılabileceği. Max-Min)
+```
+
+**Local Host:** ROS2 paketlerinin ağda gözükmesini engeller. Sadece cihaz içinde bulunan paketlerin birbirini görmesini sağlar. `export ROS_LOCALHOST_ONLY=1 `
