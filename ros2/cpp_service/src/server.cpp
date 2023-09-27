@@ -1,7 +1,7 @@
 #include "my_server.hpp"
 
 
-Server::Server():Node("cpp_server"){
+Server::Server():Node("cpp_server_node"){
         RCLCPP_INFO(this->get_logger(),"Server has been started.");
         server_ = this->create_service<AddTwoInts_msg>("server_test", std::bind(&Server::serverCallback, 
                                                                                   this, _1, _2));   
