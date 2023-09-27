@@ -12,7 +12,6 @@ public:
         this->declare_parameter("freq_pub", FREQ);
         frequency = this->get_parameter("freq_pub").as_int();
         rclcpp::Parameter number_ = this->get_parameter("cpp_class_name");
-        // number_ = this->get_parameter("cpp_class_name").as_int();
         RCLCPP_INFO(this->get_logger(), "%ld) Talker started... ", number_.as_int());
         publisher_ = this->create_publisher<string_msg>("cpp_test_counter", 10);
         timer_ = this->create_wall_timer(std::chrono::milliseconds((int)(1000.0 /frequency)), std::bind(&MyNode::publisherCallback, this));
