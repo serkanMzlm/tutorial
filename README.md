@@ -6,4 +6,6 @@
 - python
 - linux
 - matlab
+- ROS2 
+- Gazebo
 
