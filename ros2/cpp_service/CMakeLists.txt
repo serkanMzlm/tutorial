@@ -11,9 +11,10 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(example_interfaces REQUIRED)
 
-include_directories({PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/include)
 
 add_executable(client_node src/client.cpp)
+add_executable(server_node src/server.cpp)
 
 ament_target_dependencies(client_node
   rclcpp
@@ -21,8 +22,15 @@ ament_target_dependencies(client_node
   example_interfaces
 )
 
+ament_target_dependencies(server_node
+  rclcpp
+  std_msgs
+  example_interfaces
+)
+
 install(TARGETS
   client_node
+  server_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
