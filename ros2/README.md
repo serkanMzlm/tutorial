@@ -1,6 +1,6 @@
 ## ROS2 HUMBLE
 
-#### Paket Oluşturma
+### Paket Oluşturma
 - Baket Oluşturma: `--dependencies` kısmından sonra yazılan paketler sisteme eklenmesi sağlanır. (cmake ve xml dosyasına)
     - `RCL` Ros Client Library.
 ```
@@ -19,7 +19,7 @@ ros2 pkg executables [package_name]
 ros2 pkg list
 ```
 
-#### Build & Colcon
+### Build & Colcon
 - ROS2 build yaparken kullanılan `colcon build` default olarak **makefiles** kullanılır. Build işlemini değiştirmek için CMake dosyasına parametre verilebilir. `colcon build --cmake-args -G Ninja  --packages-select cpp_topic`
 - ROS2 build dosyası oluşturulurken release modunda oluşur. Bu modu değiştirmek hataları daha iyi görebilmek için `RelWithDebInfo` moduna alınabilir. `colcon build --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo`
 - `symlink-install` yapmak **cpp** için pek bir anlam ifade etmez çünkü executable dosya build edilmeden yeni yazılan kodlar çalışmıyıcaktır. **Python**'da ise dosyada yaptığımız değişiklikler doğrudan çalışmasını etkiliyecektir. (**cpp** tarafında launch ve param dosyaları için kullanılabilir.)
@@ -32,7 +32,7 @@ colcon build --packages-skip-build-finished  (daha önceden build edilip bitmiş
 
 colcon graph    (Paketler arasında bağımlılıkları gösterir.)
 ```
-#### Run
+### Run
 ```
 . /opt/ros/humble/setup.bash 
 source /opt/ros/humble/setup.bash                               (source veya . kullanılabilir.)
@@ -61,8 +61,8 @@ ros2 run [pkg_name] [node_name] --ros-args -p  [param_name]:= ...
 ros2 run [pkg_name] [ex_file] --ros-args --params-file [file_name].yaml
 ```
 
-### VS Code 
-#### Debug
+## VS Code 
+### Debug
 Paketlerde bulunan hataları daha rahat analiz edilmesi için **vs code** üzerinden ROS2 debug yapılabilir.
     - `colcon build --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo`  paketlerin runtime sırasında karşılaşına hataların daha rahat anlaşılmasını sağlar.
     - ROS2 paketini vs code ile runtime sırasında erişmek için belirli bir port üzerine yayın açmamız lazım bunu `ros2 run --prefix "gdbserver localhost:2000" [pkg_name] [node_name]` şeklinde sağlarız. (gdbserver yüklü değilse `sudo apt install gdbserver` komutu ile yüklenir.)
@@ -83,7 +83,7 @@ Paketlerde bulunan hataları daha rahat analiz edilmesi için **vs code** üzeri
     }
 
 
-#### Sürekli Tekrarlanan Kodları JSON Dosyasına Yaptıma
+### Sürekli Tekrarlanan Kodları JSON Dosyasına Yaptıma
 Belirli komutların sürekli girmek yerine bu işlemi **vs code** sayesinde kolaylaştırılabilir. VS code bulunan **tasks.json** dosyası vs code tarafından yapılandırma sağlamak için kullanılır. Örneğin derleme, test etme, paketleme gibi görevleri tanımlayabiliriz. Birden fala görev yapılabilir otomatik olarak en son çalıştırılan çalışır. `launch.json` dosyası ise  uygulamayı debug yapabilmek için gerekli ayarların yapılmasını sağlar. Birden fala görev yapılabilir otomatik olarak en son çalıştırılan çalışır.
     - `Terminal > run build task` kısmında çalıştırılır.
 
@@ -103,17 +103,22 @@ Belirli komutların sürekli girmek yerine bu işlemi **vs code** sayesinde kola
         ]
     }
 
-#### ROS Extension
+### ROS Extension
 `ctrl+shift+p` kısayolları kullanılıp **ROS** yazılır.
 
 ---
+### Genel Notlar
 
 ```
 rqt
 rqt_graph
 ```
-
----
+- `launch` dosyalarının isimlendirmesinde `launch` geçmek zorunde değildir. Alta bulunan isimlendirmelerin hepsi çalışır.
+```
+ex_1_launch.py
+ex_2.launch.py
+ex_3.py
+```
 - ROS2'da kullandığımız `RCLCPP_DEBUG, RCLCPP_INFO, RCLCPP_WARN, RCLCPP_ERROR` komut çıktılarını ekranda görürken aynı zamanda bilgisayarda `~/.ros/log` klasörünede yazılır.
 - `COLCON_PREFIX_PATH, CMAKE_PREFIX_PATH` ve `AMENT_PREFIX_PATH` bu değişkenleri **setup.bash** çalıştırılınca doldurulur. Bu değişkenlerin içi boşaltılması için `export CMAKE_PREFIX_PATH=` şeklinde boşaltılabilir.
 
