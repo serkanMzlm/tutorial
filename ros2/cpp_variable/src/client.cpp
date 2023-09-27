@@ -20,16 +20,13 @@ private:
         request->b = b;
         request->c = c;
         auto future = client_->async_send_request(request);
-        try
-        {
+        try        {
             // auto response = future.get();
             RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Sum: %ld", future.get()->sum);
         }
-        catch(const std::exception& e)
-        {
+        catch(const std::exception& e){
             RCLCPP_ERROR(this->get_logger(), "Failed to call service add_two_ints");
         }
-        
     }
     rclcpp::Client<AddThreeInts_msg>::SharedPtr client_; 
 };
