@@ -53,6 +53,13 @@ ros2 run [pkg_name] [ex_name] -r [service_name]:=new_service
 ros2 run [pkg] [executable_file] --ros-args --log-level debug      (Bütün pakette bulunan)
 ros2 run [pkg] [executable_file] --ros-args --log-level [node_name]:=debug  (Sadece belirli bir node)
 ```
+- Eğer **param** kullanılıyorsa bu kısım ya `launch` dosyasında ya da çalıştırılması sırasında atama yapılması lazım
+```
+(Belirli bir parametreye çalıştırma sırasında atama yapılır.)
+ros2 run [pkg_name] [node_name] --ros-args -p  [param_name]:= ...
+(Belirli bir .yml dosyasından çekmesini sağlar.)
+ros2 run [pkg_name] [ex_file] --ros-args --params-file [file_name].yaml
+```
 
 ### VS Code 
 #### Debug
