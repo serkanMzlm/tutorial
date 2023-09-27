@@ -10,7 +10,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(variable REQUIRED)
 
-add_executable(topic_node src/msg_main.cpp)
+add_executable(topic_node src/topic.cpp)
 add_executable(client_node src/client.cpp)
 
 ament_target_dependencies(topic_node rclcpp variable)
