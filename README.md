@@ -1,14 +1,15 @@
 ## Tutorial
 ### İçindekiler 
-- c
-- c++
-- cmake
-- python
-- linux
-- matlab
+- C
+- C++
+- CMake
+- Python
+- Linux (Bash)
+- Matlab
 - ROS2 
 - Gazebo
 - QT
 - IPC
 - Serial
+  
 
