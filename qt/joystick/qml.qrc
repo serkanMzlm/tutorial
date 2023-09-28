@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Image/down.png</file>
+        <file>Image/left.png</file>
+        <file>Image/right.png</file>
+        <file>Image/up.png</file>
+        <file>Image/circle.png</file>
+        <file>Image/rectangle.png</file>
+        <file>Image/triangle.png</file>
+        <file>Image/x.png</file>
+        <file>Image/recycle.png</file>
+        <file>Image/recycle2.png</file>
+    </qresource>
+</RCC>
