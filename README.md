@@ -8,4 +8,7 @@
 - matlab
 - ROS2 
 - Gazebo
+- QT
+- IPC
+- Serial
 
