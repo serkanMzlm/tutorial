@@ -108,6 +108,7 @@ Belirli komutların sürekli girmek yerine bu işlemi **vs code** sayesinde kola
 
 ---
 ### Genel Notlar
+- **vs_code_json** dosyasının içinde örnek json şablonları bulunmaktadır.
 
 ```
 rqt
