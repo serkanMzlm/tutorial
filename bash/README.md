@@ -1,0 +1,2 @@
+## BASH & LINUX
+- Terminal üzerinden direkt çıktının kopyalanması için `xsel --clipboard` komutu kullanılır. Bu komutu kolaylaştırmak için `alias copy='xsel --clipboard'` şeklinde **.bashrc** dosyasına yazılabilir.
