@@ -9,6 +9,9 @@ publisher_node = Node(
 subscriber_node = Node(
     package="cpp_topic",
     executable="subscriber_node",
+    name="new_node_name", # Node ismini değiştirir.
+    # output="screen",
+    # emulate_tty=False,
 )
 
 def generate_launch_description():
