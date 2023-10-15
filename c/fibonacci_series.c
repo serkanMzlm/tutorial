@@ -16,7 +16,7 @@ int main(int args, char* argv[]){
     printf("Input:  ");
     scanf("%d", &number);
     printf("Output: ");
-    // fibonacci(number);
+    fibonacci(number);
     fibonacciRecursion(number);
     return 0;
 }
