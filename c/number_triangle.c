@@ -2,15 +2,14 @@
 #include <stdlib.h>  
 
 int number;
-char currentChar;
+int count;
 
 void printTriangle(int number);
-
 int main() {
     system("clear"); // windows => system("cls");    
     printf("Enter the number of rows: ");
     scanf("%d", &number);
-    printTriangle(number);
+    printTriangle(number);    
     return 0;
 }
 
@@ -19,15 +18,15 @@ void printTriangle(int number){
         for (int space = 0; space < number - i; space++) {
             printf(" ");
         }
-        currentChar = 'A';
+        count = 1;
         for (int j = 1; j <= i; j++) {
-            printf("%c", currentChar);
-            currentChar++;
+            printf("%d", count);
+            count++;
         }
-        currentChar--;
+        count--;
         for (int j = 1; j <= i - 1; j++) {
-            currentChar--;
-            printf("%c", currentChar);
+            count--;
+            printf("%d", count);
         }
         printf("\n");
     }
