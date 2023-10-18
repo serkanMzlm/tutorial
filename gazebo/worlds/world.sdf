@@ -1,3 +1,4 @@
+<?xml version="1.0" ?> 
 <sdf version="1.7">
   <world name="my_world">
     <!-- <gravity>0 0 0.5</gravity> yerçekimi ayarı -->
