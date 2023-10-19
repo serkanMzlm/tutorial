@@ -75,6 +75,7 @@ Paketlerde bulunan hataları daha rahat analiz edilmesi için **vs code** üzeri
             {
                 "name":"C++ Debugger",
                 "request": "launch",
+                "type": "cppdbg",
                 "miDebuggerServerAddress":"localhost:2000",
                 "cwd": "/",
                 "program": "~/ex_ros/install/ex_1" 
