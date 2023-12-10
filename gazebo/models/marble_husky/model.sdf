@@ -111,7 +111,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/MARBLE_HUSKY_SENSOR_CONFIG_4/tip/files/meshes/base_link.dae</uri>
+            <uri>meshes/base_link.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -120,7 +120,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/MARBLE_HUSKY_SENSOR_CONFIG_4/tip/files/meshes/bumper.dae</uri>
+            <uri>meshes/bumper.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -129,7 +129,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/MARBLE_HUSKY_SENSOR_CONFIG_4/tip/files/meshes/bumper.dae</uri>
+            <uri>meshes/bumper.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -137,7 +137,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/MARBLE_HUSKY_SENSOR_CONFIG_4/tip/files/meshes/top_chassis.dae</uri>
+            <uri>meshes/top_chassis.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -148,7 +148,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/MARBLE_HUSKY_SENSOR_CONFIG_4/tip/files/meshes/user_rail.dae</uri>
+            <uri>meshes/user_rail.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -179,23 +179,18 @@
         </geometry>
       </visual>
 
-    
-    
-      <sensor name="tof_left" type="depth_camera">
+      <!-- <sensor name="tof_left" type="depth_camera">
         <pose>0.527 0.015 0.429 -1.344521 0.4763404 0.4653087</pose>
         <always_on>1</always_on>
-        <update_rate>10</update_rate>
+        <update_rate>1</update_rate>
         <topic>depth_camera_left</topic>
         <camera name="tof_left">
             <horizontal_fov>1.0821</horizontal_fov>
             <lens>
                 <intrinsics>
-                    <!-- fx = fy = width / ( 2 * tan (hfov / 2 ) ) -->
                     <fx>186.4</fx>
                     <fy>186.4</fy>
-                    <!-- cx = ( width + 1 ) / 2 -->
                     <cx>112.5</cx>
-                    <!-- cy = ( height + 1 ) / 2 -->
                     <cy>86</cy>
                     <s>0</s>
                 </intrinsics>
@@ -230,56 +225,7 @@
                 <stddev>0.007</stddev>
             </noise>
         </camera>
-      </sensor>
-
-      <sensor name="tof_right" type="depth_camera">
-        <pose>0.527 -0.015 0.429 -1.7970717 0.4763404 -0.4653087</pose>
-        <always_on>1</always_on>
-        <update_rate>10</update_rate>
-        <topic>depth_camera_right</topic>
-        <camera name="tof_right">
-            <horizontal_fov>1.0821</horizontal_fov>
-            <lens>
-                <intrinsics>
-                    <fx>186.4</fx>
-                    <fy>186.4</fy>
-                    <cx>112.5</cx>
-                    <cy>86</cy>
-                    <s>0</s>
-                </intrinsics>
-            </lens>
-            <distortion>
-                <k1>0.0</k1>
-                <k2>0.0</k2>
-                <k3>0.0</k3>
-                <p1>0.0</p1>
-                <p2>0.0</p2>
-                <center>0.5 0.5</center>
-            </distortion>
-            <image>
-                <width>50</width>
-                <height>50</height>
-                <format>R8G8B8</format>
-            </image>
-            <clip>
-                <near>0.1</near>
-                <far>4.0</far>
-            </clip>
-            <depth_camera>
-              <output>depths</output>
-              <clip>
-                  <near>0.1</near>
-                  <far>4.0</far>
-              </clip>
-            </depth_camera>
-            <noise>
-                <type>gaussian</type>
-                <mean>0</mean>
-                <stddev>0.007</stddev>
-            </noise>
-        </camera>
-      </sensor>
-
+      </sensor> -->
       <visual name="sensor_head_visual">
         <pose>0.4379 0 .54818 0 0 0</pose>
         <geometry>
@@ -344,92 +290,84 @@
           </box>
         </geometry>
       </collision>
-        <sensor name="imu_sensor" type="imu">
-          <always_on>1</always_on>
-          <update_rate>500</update_rate>
-          <topic>imu</topic>
-          <imu>
-                    <enable_orientation>0</enable_orientation>
-                    <angular_velocity>
-                        <x>
-                            <noise type="gaussian">
-                                <mean>0</mean>
-                                <stddev>0.009</stddev>
-                                <bias_mean>0.00075</bias_mean>
-                                <bias_stddev>0.005</bias_stddev>
-                                <dynamic_bias_stddev>0.00002</dynamic_bias_stddev>
-                                <dynamic_bias_correlation_time>400.0</dynamic_bias_correlation_time>
-                                <precision>0.00025</precision>
-                            </noise>
-                        </x>
-                        <y>
-                            <noise type="gaussian">
-                                <mean>0</mean>
-                                <stddev>0.009</stddev>
-                                <bias_mean>0.00075</bias_mean>
-                                <bias_stddev>0.005</bias_stddev>
-                                <dynamic_bias_stddev>0.00002</dynamic_bias_stddev>
-                                <dynamic_bias_correlation_time>400.0</dynamic_bias_correlation_time>
-                                <precision>0.00025</precision>
-                            </noise>
-                        </y>
-                        <z>
-                            <noise type="gaussian">
-                                <mean>0</mean>
-                                <stddev>0.009</stddev>
-                                <bias_mean>0.00075</bias_mean>
-                                <bias_stddev>0.005</bias_stddev>
-                                <dynamic_bias_stddev>0.00002</dynamic_bias_stddev>
-                                <dynamic_bias_correlation_time>400.0</dynamic_bias_correlation_time>
-                                <precision>0.00025</precision>
-                            </noise>
-                        </z>
-                    </angular_velocity>
-                    <linear_acceleration>
-                        <x>
-                            <noise type="gaussian">
-                                <mean>0</mean>
-                                <stddev>0.021</stddev>
-                                <bias_mean>0.05</bias_mean>
-                                <bias_stddev>0.0075</bias_stddev>
-                                <dynamic_bias_stddev>0.000375</dynamic_bias_stddev>
-                                <dynamic_bias_correlation_time>175.0</dynamic_bias_correlation_time>
-                                <precision>0.005</precision>
-                            </noise>
-                        </x>
-                        <y>
-                            <noise type="gaussian">
-                                <mean>0</mean>
-                                <stddev>0.021</stddev>
-                                <bias_mean>0.05</bias_mean>
-                                <bias_stddev>0.0075</bias_stddev>
-                                <dynamic_bias_stddev>0.000375</dynamic_bias_stddev>
-                                <dynamic_bias_correlation_time>175.0</dynamic_bias_correlation_time>
-                                <precision>0.005</precision>
-                            </noise>
-                        </y>
-                        <z>
-                            <noise type="gaussian">
-                                <mean>0</mean>
-                                <stddev>0.021</stddev>
-                                <bias_mean>0.05</bias_mean>
-                                <bias_stddev>0.0075</bias_stddev>
-                                <dynamic_bias_stddev>0.000375</dynamic_bias_stddev>
-                                <dynamic_bias_correlation_time>175.0</dynamic_bias_correlation_time>
-                                <precision>0.005</precision>
-                            </noise>
-                        </z>
-                    </linear_acceleration>
-                </imu>
-        </sensor>
-
-        <sensor name="altimeter" type="altimeter">
-            <always_on>1</always_on>
-            <update_rate>1</update_rate>
-            <visualize>true</visualize>
-            <topic>altimeter</topic>
-            <enable_metrics>true</enable_metrics> 
-        </sensor>
+      <sensor name="imu_sensor" type="imu">
+        <always_on>1</always_on>
+        <update_rate>500</update_rate>
+        <topic>imu</topic>
+        <imu>
+                <enable_orientation>0</enable_orientation>
+                <angular_velocity>
+                    <x>
+                        <noise type="gaussian">
+                            <mean>0</mean>
+                            <stddev>0.009</stddev>
+                            <bias_mean>0.00075</bias_mean>
+                            <bias_stddev>0.005</bias_stddev>
+                            <dynamic_bias_stddev>0.00002</dynamic_bias_stddev>
+                            <dynamic_bias_correlation_time>400.0</dynamic_bias_correlation_time>
+                            <precision>0.00025</precision>
+                        </noise>
+                    </x>
+                    <y>
+                        <noise type="gaussian">
+                            <mean>0</mean>
+                            <stddev>0.009</stddev>
+                            <bias_mean>0.00075</bias_mean>
+                            <bias_stddev>0.005</bias_stddev>
+                            <dynamic_bias_stddev>0.00002</dynamic_bias_stddev>
+                            <dynamic_bias_correlation_time>400.0</dynamic_bias_correlation_time>
+                            <precision>0.00025</precision>
+                        </noise>
+                    </y>
+                    <z>
+                        <noise type="gaussian">
+                            <mean>0</mean>
+                            <stddev>0.009</stddev>
+                            <bias_mean>0.00075</bias_mean>
+                            <bias_stddev>0.005</bias_stddev>
+                            <dynamic_bias_stddev>0.00002</dynamic_bias_stddev>
+                            <dynamic_bias_correlation_time>400.0</dynamic_bias_correlation_time>
+                            <precision>0.00025</precision>
+                        </noise>
+                    </z>
+                </angular_velocity>
+                <linear_acceleration>
+                    <x>
+                        <noise type="gaussian">
+                            <mean>0</mean>
+                            <stddev>0.021</stddev>
+                            <bias_mean>0.05</bias_mean>
+                            <bias_stddev>0.0075</bias_stddev>
+                            <dynamic_bias_stddev>0.000375</dynamic_bias_stddev>
+                            <dynamic_bias_correlation_time>175.0</dynamic_bias_correlation_time>
+                            <precision>0.005</precision>
+                        </noise>
+                    </x>
+                    <y>
+                        <noise type="gaussian">
+                            <mean>0</mean>
+                            <stddev>0.021</stddev>
+                            <bias_mean>0.05</bias_mean>
+                            <bias_stddev>0.0075</bias_stddev>
+                            <dynamic_bias_stddev>0.000375</dynamic_bias_stddev>
+                            <dynamic_bias_correlation_time>175.0</dynamic_bias_correlation_time>
+                            <precision>0.005</precision>
+                        </noise>
+                    </y>
+                    <z>
+                        <noise type="gaussian">
+                            <mean>0</mean>
+                            <stddev>0.021</stddev>
+                            <bias_mean>0.05</bias_mean>
+                            <bias_stddev>0.0075</bias_stddev>
+                            <dynamic_bias_stddev>0.000375</dynamic_bias_stddev>
+                            <dynamic_bias_correlation_time>175.0</dynamic_bias_correlation_time>
+                            <precision>0.005</precision>
+                        </noise>
+                    </z>
+                </linear_acceleration>
+          </imu>
+      </sensor> 
 
         <!-- Bottom cylinder of Ouster/Velodyne 3D Lidar -->
         <visual name="base_link_fixed_joint_lump__velodyne_base_link_visual_10">
@@ -437,7 +375,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/MARBLE_HUSKY_SENSOR_CONFIG_4/tip/files/meshes/VLP16_base_1.dae</uri>
+              <uri>meshes/VLP16_base_1.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -447,7 +385,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/MARBLE_HUSKY_SENSOR_CONFIG_4/tip/files/meshes/VLP16_base_2.dae</uri>
+              <uri>meshes/VLP16_base_2.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -457,50 +395,49 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/MARBLE_HUSKY_SENSOR_CONFIG_4/tip/files/meshes/VLP16_scan.dae</uri>
+              <uri>meshes/VLP16_scan.dae</uri>
             </mesh>
           </geometry>
         </visual>
 
         <!-- OS1-64 3D Laser Configuration (10x2048 or 10x1024 or 20x1024 or 20x512 as possible (rate) x (hor. res.) configs)-->
-        <sensor name="front_laser" type="gpu_lidar">
-          <visualize>true</visualize>
-          <update_rate>10</update_rate>
-          <topic>front_laser</topic>
-          <lidar>
-            <scan>
-              <horizontal>
-                <samples>1024</samples>
-                <resolution>1</resolution>
-                <min_angle>-3.14159</min_angle>
-                <max_angle>3.14159</max_angle>
-              </horizontal>
-              <vertical>
-                <samples>64</samples>
-                <resolution>1</resolution>
-                <min_angle>-0.2</min_angle>
-                <max_angle>0.05</max_angle>
-              </vertical>
-            </scan>
-            <range>
-              <min>0.8</min>
-              <max>15</max>
-              <resolution>0.1</resolution>
-            </range>
-            <noise>
-              <type>gaussian</type>
-              <mean>0</mean>
-              <stddev>0.01</stddev>
-            </noise>
-          </lidar>
-          <pose>0.4379 0 0.67018 0 -0 0</pose>
-        </sensor>
+      <sensor name="front_laser" type="gpu_lidar">
+        <visualize>true</visualize>
+        <update_rate>10</update_rate>
+        <topic>lidar</topic>
+        <lidar>
+          <scan>
+            <horizontal>
+              <samples>180</samples>
+              <resolution>1</resolution>
+              <min_angle>-3.14159</min_angle>
+              <max_angle>3.14159</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>3</samples>
+              <resolution>1</resolution>
+              <min_angle>-0.05</min_angle>
+              <max_angle>0.05</max_angle>
+            </vertical>
+          </scan>
+          <range>
+            <min>0.2</min>
+            <max>3</max>
+            <resolution>0.1</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </lidar>
+        <pose>0.4379 0 0.67018 0 -0 0</pose>
+      </sensor>
 
       <gravity>1</gravity>
       <velocity_decay/>
 
         <!-- OS1-64 3D Laser Configuration (10x2048 or 10x1024 or 20x1024 or 20x512 as possible (rate) x (hor. res.) configs)-->
-       
         <visual name="camera_front_visual">
             <pose>0.5179 0 0.53718 0 1.5709 0</pose>
             <geometry>
@@ -526,13 +463,13 @@
             <camera>
                 <horizontal_fov>1.089</horizontal_fov>
                 <image>
-                <width>640</width>
-                <height>480</height>
-                <format>R8G8B8</format>
+                  <width>720</width>
+                  <height>720</height>
+                  <format>R8G8B8</format>
                 </image>
                 <clip>
-                <near>0.1</near>
-                <far>100</far>
+                  <near>0.1</near>
+                  <far>100</far>
                 </clip>
             </camera>
             <always_on>1</always_on>
@@ -540,65 +477,28 @@
             <visualize>true</visualize>
             <topic>camera</topic>
         </sensor>
-        <!-- <sensor name="camera_front" type="camera">
-          <pose>0.5 0.0 0.3 0 0.174533 0</pose>
-          <always_on>1</always_on>
-          <update_rate>10</update_rate>
-          <topic>camera</topic>
-          <camera name="camera_front">
-              <horizontal_fov>1.39626</horizontal_fov>
-              <lens>
-                  <intrinsics>
-                      <fx>481.5</fx>
-                      <fy>481.5</fy>
-                      <cx>404.5</cx>
-                      <cy>304.5</cy>
-                      <s>0</s>
-                  </intrinsics>
-              </lens>
-              <distortion>
-                  <k1>0.0</k1>
-                  <k2>0.0</k2>
-                  <k3>0.0</k3>
-                  <p1>0.0</p1>
-                  <p2>0.0</p2>
-                  <center>0.5 0.5</center>
-              </distortion>
-              <image>
-                  <width>200</width>
-                  <height>200</height>
-                  <format>R8G8B8</format>
-              </image>
-              <clip>
-                  <near>0.01</near>
-                  <far>300</far>
-              </clip>
-              <noise>
-                  <type>gaussian</type>
-                  <mean>0</mean>
-                  <stddev>0.007</stddev>
-              </noise>
-          </camera>
-        </sensor> -->
 
-      <light name="flash" type="spot">
-        <pose>0.5179 0 0.53718 3.14159 1.5709 0</pose>
-        <attenuation>
-          <range>35</range>
-          <linear>0</linear>
-          <constant>0.1</constant>
-          <quadratic>0.0025</quadratic>
-        </attenuation>
-        <diffuse>0.8 0.8 0.5 1</diffuse>
-        <specular>0.8 0.8 0.5 1</specular>
-        <spot>
-          <inner_angle>1.8</inner_angle>
-          <outer_angle>1.9</outer_angle>
-          <falloff>1</falloff>
-        </spot>
-        <direction>0 0 -1</direction>
-      </light>
+        <light name="flash" type="spot">
+          <pose>0.55 0 0.5 3.14159 1.5709 0</pose>
+          <cast_shadows>1</cast_shadows>
+          <visualize>false</visualize>
+          <attenuation>
+            <range>10</range>
+            <linear>0.1</linear>
+            <constant>0.1</constant>
+            <quadratic>0.0025</quadratic>
+          </attenuation>
+          <diffuse>0.8 0.8 0.5 1</diffuse>
+          <specular>0.8 0.8 0.5 1</specular>
+          <spot>
+            <inner_angle>0.9</inner_angle>
+            <outer_angle>1.0</outer_angle>
+            <falloff>1</falloff>
+          </spot>
+          <direction>0 0 -1</direction>
+        </light>
     </link>
+    
 
     <link name="front_left_wheel_link">
       <pose>0.256 0.2854 0.03282 0 -0 0</pose>
@@ -643,7 +543,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/MARBLE_HUSKY_SENSOR_CONFIG_4/tip/files/meshes/wheel.dae</uri>
+            <uri>meshes/wheel.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -709,7 +609,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/MARBLE_HUSKY_SENSOR_CONFIG_4/tip/files/meshes/wheel.dae</uri>
+            <uri>meshes/wheel.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -775,7 +675,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/MARBLE_HUSKY_SENSOR_CONFIG_4/tip/files/meshes/wheel.dae</uri>
+            <uri>meshes/wheel.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -841,7 +741,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/MARBLE_HUSKY_SENSOR_CONFIG_4/tip/files/meshes/wheel.dae</uri>
+            <uri>meshes/wheel.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -865,7 +765,6 @@
       </axis>
     </joint>
 
-
     <plugin
         filename="gz-sim-diff-drive-system"
         name="gz::sim::systems::DiffDrive">
@@ -877,115 +776,6 @@
         <wheel_radius>0.3</wheel_radius>
         <odom_publish_frequency>1</odom_publish_frequency>  
         <topic>cmd_vel</topic>
-      </plugin>
-
-       <!-- Moving Forward: W -->
-      <plugin filename="gz-sim-triggered-publisher-system"
-              name="gz::sim::systems::TriggeredPublisher">
-          <input type="gz.msgs.Int32" topic="/keyboard/keypress">
-              <match field="data">87</match>
-          </input>
-          <output type="gz.msgs.Twist" topic="/cmd_vel">
-              linear: {x: 2.0}, angular: {z: 0.0}
-          </output>
-      </plugin>
-
-      <!-- Moving Backward: X -->
-      <plugin filename="gz-sim-triggered-publisher-system"
-              name="gz::sim::systems::TriggeredPublisher">
-          <input type="gz.msgs.Int32" topic="/keyboard/keypress">
-              <match field="data">88</match>
-          </input>
-          <output type="gz.msgs.Twist" topic="/cmd_vel">
-              linear: {x: -2.0}, angular: {z: 0.0}
-          </output>
-      </plugin>
-
-      <!-- Rotating right: D -->
-      <plugin filename="gz-sim-triggered-publisher-system"
-              name="gz::sim::systems::TriggeredPublisher">
-          <input type="gz.msgs.Int32" topic="/keyboard/keypress">
-              <match field="data">68</match>
-          </input>
-          <output type="gz.msgs.Twist" topic="/cmd_vel">
-              linear: {x: 0.0}, angular: {z: -0.5}
-          </output>
-      </plugin>
-
-      <!--Rotating left: A -->
-      <plugin filename="gz-sim-triggered-publisher-system"
-              name="gz::sim::systems::TriggeredPublisher">
-          <input type="gz.msgs.Int32" topic="/keyboard/keypress">
-              <match field="data">65</match>
-          </input>
-          <output type="gz.msgs.Twist" topic="/cmd_vel">
-              linear: {x: 0.0}, angular: {z: 0.5}
-          </output>
-      </plugin>
-
-      <!--Stop: S -->
-      <plugin filename="gz-sim-triggered-publisher-system"
-              name="gz::sim::systems::TriggeredPublisher">
-          <input type="gz.msgs.Int32" topic="/keyboard/keypress">
-              <match field="data">83</match>
-          </input>
-          <output type="gz.msgs.Twist" topic="/cmd_vel">
-              linear: {x: 0.0}, angular: {z: 0.0}
-          </output>
-      </plugin>
-       <plugin filename="gz-sim-triggered-publisher-system"
-              name="gz::sim::systems::TriggeredPublisher">
-          <input type="gz.msgs.Int32" topic="/keyboard/keypress">
-              <match field="data">87</match>
-          </input>
-          <output type="gz.msgs.Twist" topic="/cmd_vel">
-              linear: {x: 2.0}, angular: {z: 0.0}
-          </output>
-      </plugin>
-
-      <!-- Moving Backward: X -->
-      <plugin filename="gz-sim-triggered-publisher-system"
-              name="gz::sim::systems::TriggeredPublisher">
-          <input type="gz.msgs.Int32" topic="/keyboard/keypress">
-              <match field="data">88</match>
-          </input>
-          <output type="gz.msgs.Twist" topic="/cmd_vel">
-              linear: {x: -2.0}, angular: {z: 0.0}
-          </output>
-      </plugin>
-
-      <!-- Rotating right: D -->
-      <plugin filename="gz-sim-triggered-publisher-system"
-              name="gz::sim::systems::TriggeredPublisher">
-          <input type="gz.msgs.Int32" topic="/keyboard/keypress">
-              <match field="data">68</match>
-          </input>
-          <output type="gz.msgs.Twist" topic="/cmd_vel">
-              linear: {x: 0.0}, angular: {z: -0.5}
-          </output>
-      </plugin>
-
-      <!--Rotating left: A -->
-      <plugin filename="gz-sim-triggered-publisher-system"
-              name="gz::sim::systems::TriggeredPublisher">
-          <input type="gz.msgs.Int32" topic="/keyboard/keypress">
-              <match field="data">65</match>
-          </input>
-          <output type="gz.msgs.Twist" topic="/cmd_vel">
-              linear: {x: 0.0}, angular: {z: 0.5}
-          </output>
-      </plugin>
-
-      <!--Stop: S -->
-      <plugin filename="gz-sim-triggered-publisher-system"
-              name="gz::sim::systems::TriggeredPublisher">
-          <input type="gz.msgs.Int32" topic="/keyboard/keypress">
-              <match field="data">83</match>
-          </input>
-          <output type="gz.msgs.Twist" topic="/cmd_vel">
-              linear: {x: 0.0}, angular: {z: 0.0}
-          </output>
-      </plugin>
-
+	</plugin>
   </model>
 </sdf>

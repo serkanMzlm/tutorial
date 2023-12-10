@@ -15,8 +15,8 @@
             </plane>
           </geometry>
           <material> <!-- madde özellikleri eklendi -->
-            <ambient>0 0.5 0.5 1</ambient> <!-- kırmızı yeşil mavi ve alfa değerleridir. -->
-            <diffuse>0 0.5 0.5 1</diffuse> <!-- Şeffaf ayarı yapılır. -->
+            <ambient>0.5 0.5 0.5 1</ambient> <!-- kırmızı yeşil mavi ve alfa değerleridir. -->
+            <diffuse>0.5 0.5 0.5 1</diffuse> <!-- Şeffaf ayarı yapılır. -->
             <specular>0 0 1 1</specular>
           </material>
         </visual>
