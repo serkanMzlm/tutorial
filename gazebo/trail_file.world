@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
-<sdf version="1.7">
+<sdf version="1.8">
     <world name="default">
         <include>
-            <uri>model://ground_plane</uri> 
+            <uri>model://blue_wheel_bot</uri> 
         </include>
+        
     </world>
 </sdf>
