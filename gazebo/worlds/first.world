@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+    <world name="first_world">
+        <physics name="1ms" type="ignored">
+            <max_step_size>0.001</max_step_size>
+            <real_time_factor>1.0</real_time_factor>
+        </physics>
+
+        <!-- Dünya dinamiklerini simüle edebimek için gereklidir. -->
+        <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"></plugin>
+
+        <!-- Modellerin taşınması silinmesi vs. olaylar için gereklidir. -->
+        <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"></plugin>
+        <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"></plugin>
+
+        <!-- GUI ayarlamaları yapılır -->
+        <gui fullscreen="0">
+
+        </gui>
+
+
+    </world>
+</sdf>

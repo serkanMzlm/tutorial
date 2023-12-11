@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 <sdf version="1.8">
     <world name="default">
+        
         <include>
             <pose>0 0 2 0 0 0</pose>
-            <uri>model://black_wheel_6x6</uri> 
+            <uri>model://blue_wheel_bot</uri> 
         </include>
         <include>
             <name>ground_2</name>
