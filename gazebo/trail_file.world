@@ -2,8 +2,13 @@
 <sdf version="1.8">
     <world name="default">
         <include>
-            <uri>model://blue_wheel_bot</uri> 
+            <pose>0 0 2 0 0 0</pose>
+            <uri>model://black_wheel_6x6</uri> 
         </include>
-        
+        <include>
+            <name>ground_2</name>
+            <pose>0 0 0 0 0 0</pose>
+            <uri>model://gray_ground</uri>
+        </include>
     </world>
 </sdf>
