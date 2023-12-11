@@ -67,7 +67,7 @@
             <stats_topic>/world/world_demo/stats</stats_topic>
         </plugin>
 
-        <!-- World statistics -->
+        <!-- Dünya durumunu gösterir. (geçen zaman, RTF, ...)-->
         <plugin filename="WorldStats" name="World stats">
             <gz-gui>
                 <title>World stats</title>
@@ -89,6 +89,10 @@
             <real_time_factor>true</real_time_factor>
             <iterations>true</iterations>
             <topic>/world/world_demo/stats</topic>
+        </plugin>
+
+        <!-- Boş bir pencere açar -->
+        <plugin filename="EntityTree" name="Entity tree">
         </plugin>
 
         </gui>
