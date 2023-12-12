@@ -46,14 +46,14 @@
                 <horizontal_fov>57.29578</horizontal_fov> <!-- Kamera bir nesneyi takip ederken kullanışlı oluyor -->
             </plugin>
 
-<plugin filename="EntityContextMenuPlugin" name="Entity context menu">
-    <gz-gui>
-        <property key="state" type="string">floating</property>
-        <property key="width" type="double">5</property>
-        <property key="height" type="double">5</property>
-        <property key="showTitleBar" type="bool">false</property>
-    </gz-gui>
-</plugin>
+            <plugin filename="EntityContextMenuPlugin" name="Entity context menu">
+                <gz-gui>
+                    <property key="state" type="string">floating</property>
+                    <property key="width" type="double">5</property>
+                    <property key="height" type="double">5</property>
+                    <property key="showTitleBar" type="bool">false</property>
+                </gz-gui>
+            </plugin>
 
             <plugin filename="GzSceneManager" name="Scene Manager">
                 <gz-gui>

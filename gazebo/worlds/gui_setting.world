@@ -50,7 +50,8 @@
                 <property key="resizable" type="bool">false</property>
                 <property key="width" type="double">5</property>
                 <property key="height" type="double">5</property>
-                <property key="state" type="string">floating</property> <!-- docked -->
+          <!-- "docked" yanda bir panel ekler floating kapatılabilir panel ekler   -->
+                <property key="state" type="string">floating</property> 
                 <property key="showTitleBar" type="bool">false</property>
                 </gz-gui>
             </plugin>
