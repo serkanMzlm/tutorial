@@ -55,6 +55,71 @@
                 </gz-gui>
             </plugin>
 
+            <!-- Bu kısım nesneler üzerinde sağ tıkla menü açılmasını sağlar -->
+            <plugin filename="EntityContextMenuPlugin" name="Entity context menu">
+                <gz-gui>
+                    <property key="state" type="string">floating</property>
+                    <property key="width" type="double">5</property>
+                    <property key="height" type="double">5</property>
+                    <property key="showTitleBar" type="bool">false</property>
+                </gz-gui>
+            </plugin>
+
+            <!-- Simülasyonda Bakış açısını ayarlamamızı simülasyon sırasında bakış açısını 
+                değiştirmek için kullanılır. -->
+            <plugin filename="InteractiveViewControl" name="Interactive view control">
+                <gz-gui>
+                    <property key="resizable" type="bool">false</property>
+                    <property key="width" type="double">5</property>
+                    <property key="height" type="double">5</property>
+                    <property key="state" type="string">floating</property>
+                    <property key="showTitleBar" type="bool">false</property>
+                </gz-gui>
+            </plugin>
+
+            <!-- Kameranın belirtilen nesneyi takip etmesini sağlar -->
+            <plugin filename="CameraTracking" name="Camera Tracking">
+                <gz-gui>
+                    <property key="resizable" type="bool">false</property>
+                    <property key="width" type="double">5</property>
+                    <property key="height" type="double">5</property>
+                    <property key="state" type="string">floating</property>
+                    <property key="showTitleBar" type="bool">false</property>
+                </gz-gui>
+            </plugin>
+
+            <plugin filename="MarkerManager" name="Marker manager">
+                <gz-gui>
+                    <property key="resizable" type="bool">false</property>
+                    <property key="width" type="double">5</property>
+                    <property key="height" type="double">5</property>
+                    <property key="state" type="string">floating</property>
+                    <property key="showTitleBar" type="bool">false</property>
+                </gz-gui>
+            </plugin>
+            <plugin filename="SelectEntities" name="Select Entities">
+                <gz-gui>
+                    <anchors target="Select entities">
+                        <line own="right" target="right"/>
+                        <line own="top" target="top"/>
+                    </anchors>
+                    <property key="resizable" type="bool">false</property>
+                    <property key="width" type="double">5</property>
+                    <property key="height" type="double">5</property>
+                    <property key="state" type="string">floating</property>
+                    <property key="showTitleBar" type="bool">false</property>
+                </gz-gui>
+            </plugin>
+            <plugin filename="VisualizationCapabilities" name="Visualization Capabilities">
+                <gz-gui>
+                    <property key="resizable" type="bool">false</property>
+                    <property key="width" type="double">5</property>
+                    <property key="height" type="double">5</property>
+                    <property key="state" type="string">floating</property>
+                    <property key="showTitleBar" type="bool">false</property>
+                </gz-gui>
+            </plugin>
+            
             <!-- Dünyayı durdurma, devam ettirme vs işlerine yarayan butonların ayarlarının 
             yapılmasını sağlar. -->
             <plugin filename="WorldControl" name="World control">
