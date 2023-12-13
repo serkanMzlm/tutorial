@@ -27,7 +27,8 @@
 
         <!-- GUI ayarlamaları yapılır -->
         <gui fullscreen="0">
-            <!-- 3D görünümün oluşmasını sağlarlar. -->
+            <!-- <plugin name='3D View' filename='GzScene3D'> yazılırsa alta bulunan 
+		        plaginlerin çoğuna gerek kalmaz. 3D görünümün oluşmasını sağlarlar. -->
             <plugin filename="MinimalScene" name="3D View">
                 <gz-gui>
                     <title>3D View</title>
