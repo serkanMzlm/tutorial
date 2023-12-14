@@ -208,5 +208,18 @@
                 linear: {x: -0.5}, angular: {z: 0.0}
             </output>
         </plugin>
+
+        <plugin filename="gz-sim-touchplugin-system" name="gz::sim::systems::TouchPlugin">
+            <target>blue_wheel_bot</target>
+            <namespace>wall</namespace>
+            <time>0.001</time>
+            <enabled>true</enabled>
+        </plugin>
+        
+        <plugin filename="gz-sim-triggered-publisher-system" name="gz::sim::systems::TriggeredPublisher">
+            <input type="gz.msgs.Boolean" topic="/wall/touched"></input>
+            <output>linear: { x: 0.0 }, angular: { z: 0.0 } </output>
+        </plugin>
+
     </model>
 </sdf>
