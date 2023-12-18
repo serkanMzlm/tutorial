@@ -24,6 +24,10 @@
       <uri>model://blue_wheel_bot</uri>
     </include>
     <include>
+      <pose>4 0 2 0 0 0</pose>
+      <uri>model://cube</uri>
+    </include>
+    <include>
       <uri>model://gray_ground</uri>
     </include>
   </world>
