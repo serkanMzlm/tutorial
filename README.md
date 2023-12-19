@@ -9,6 +9,6 @@
 - ROS2 
 - Gazebo
 - QT
-- IPC
+- IPC (Inter Process Commonication)
 - Serial
 - MAVLink
