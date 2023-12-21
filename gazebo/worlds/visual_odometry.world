@@ -122,8 +122,39 @@
         </include>
 
         <include>
+            <pose>0 0 0.2 0 0 0</pose>
             <uri>model://x1_config_7</uri>
         </include>
+
+        <include>
+            <name>tree</name>
+            <pose>2 1 0.2 0 0 0</pose>
+            <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine Tree</uri>
+        </include>
+        <include>
+            <name>tree_1</name>
+            <pose>2 2 0.2 0 0 0</pose>
+            <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine Tree</uri>
+        </include>
+        <include>
+            <name>tree_2</name>
+            <pose>2 3 0.2 0 0 0</pose>
+            <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine Tree</uri>
+        </include>
+        <include>
+            <name>tree_3</name>
+            <pose>2 4 0.2 0 0 0</pose>
+            <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine Tree</uri>
+        </include>
+        <include>
+            <name>tree_4</name>
+            <pose>2 5 0.2 0 0 0</pose>
+            <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine Tree</uri>
+        </include>
+
+        <!-- <include>
+            <uri>https://fuel.gazebosim.org/1.0/makerspet/worlds/living_room</uri>
+        </include> -->
 
         <light type="directional" name="some_light">
             <pose>0 0 10 0 0 0</pose>
