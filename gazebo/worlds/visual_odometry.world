@@ -117,9 +117,14 @@
         </gui>
 
         <include>
-            <pose>0 0 1 0 0 0</pose>
+            <pose>0 0 0 0 0 0</pose>
             <uri>model://ground_plane</uri>
         </include>
+
+        <include>
+            <uri>model://x1_config_7</uri>
+        </include>
+
         <light type="directional" name="some_light">
             <pose>0 0 10 0 0 0</pose>
             <diffuse>0.7 0.7 0.7 0</diffuse>
@@ -127,5 +132,4 @@
             <direction>-0.5 0.1 -0.9</direction>
         </light>
     </world>
-
 </sdf>
