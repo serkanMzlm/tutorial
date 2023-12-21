@@ -9,10 +9,9 @@
                 <max_contacts>10</max_contacts>
                 <pose>0 0 0 0 -0 0</pose>
                 <geometry>
-					<plane>
-						<normal>0 0 1</normal>
-						<size>100 100 0.1</size>
-					</plane>
+                    <mesh>
+                        <uri>untitled.dae</uri>
+                    </mesh>
                 </geometry>
             </collision>
 
