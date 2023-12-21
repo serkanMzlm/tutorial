@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 4.0.2 commit date:2023-12-05, commit time:07:41, hash:9be62e85b727</authoring_tool>
     </contributor>
-    <created>2023-12-21T14:47:33</created>
-    <modified>2023-12-21T14:47:33</modified>
+    <created>2023-12-21T16:38:39</created>
+    <modified>2023-12-21T16:38:39</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -153,7 +153,7 @@
   <library_visual_scenes>
     <visual_scene id="Scene" name="Scene">
       <node id="Plane" name="Plane" type="NODE">
-        <matrix sid="transform">180.3135 0 0 0 0 169.324 0 0 0 0 1 0 0 0 0 1</matrix>
+        <matrix sid="transform">30 0 0 0 0 30 0 0 0 0 1 0 0 0 0 1</matrix>
         <instance_geometry url="#Plane-mesh" name="Plane">
           <bind_material>
             <technique_common>
