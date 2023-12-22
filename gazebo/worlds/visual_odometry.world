@@ -129,22 +129,22 @@
         <include>
             <name>tree</name>
             <pose>4 0 0 0 0 0</pose>
-            <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine Tree</uri>
+            <uri>mode://Pine Tree</uri>
         </include>
         <include>
             <name>tree_1</name>
             <pose>4 4 0 0 0 0</pose>
-            <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine Tree</uri>
+            <uri>mode://Pine Tree</uri>
         </include>
         <include>
             <name>tree_2</name>
             <pose>8 8 0 0 0 0</pose>
-            <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine Tree</uri>
+            <uri>mode://Pine Tree</uri>
         </include>
         <include>
             <name>tree_3</name>
             <pose>8 12 0 0 0 0</pose>
-            <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine Tree</uri>
+            <uri>mode://Pine Tree</uri>
         </include>
 
         <!-- <include>
