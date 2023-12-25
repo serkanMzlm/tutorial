@@ -3,9 +3,8 @@
   <model name="maze">
 
   <include>
-    <name>Grey_Wall_2</name>
-    <pose>-1.72 3.4 0 0 0 0</pose>
-    <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Grey Wall</uri>
+    <pose>-1.72 3.1 0.7 1.57 0 0</pose>
+    <uri>model://wall_5_2</uri>
   </include>
 
   <include>

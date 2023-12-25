@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.8">
+	<model name="wall_5_2">
+		<static>true</static>
+      	<link name="box_link">
+			<collision name="box_collision">
+				<geometry>
+					<box>
+						<size>7 2 0.05</size>
+					</box>
+				</geometry>
+			</collision>
+			<visual name="box_visual">
+				<geometry>
+					<box>
+						<size>7 2 0.05</size>
+					</box>
+				</geometry>
+				<material>
+					<ambient>0 0 0 1</ambient>
+					<diffuse>0 0 0 1</diffuse>
+					<specular>0 0 0 1</specular>
+				</material>
+			</visual>
+      	</link>
+    </model>
+</sdf>
