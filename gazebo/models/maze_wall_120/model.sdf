@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="maze_wall_120">
+    <static>true</static>
+    <link name="maze_wall_120_link">
+      <pose>0 0 0.0 0 0 0</pose>
+      <collision name="collision">
+        <pose>0 0.6 0.6 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.2 0.02 1.2</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://maze_wall_120/meshes/nist_maze_wall_120.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>
