@@ -25,7 +25,7 @@
       <uri>model://maze</uri>
     </include>
     <include>
-      <uri>model://gray_ground</uri>
+      <uri>model://ground_plane</uri>
     </include>
   </world>
 </sdf>
