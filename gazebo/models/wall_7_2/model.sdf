@@ -4,23 +4,19 @@
 		<static>true</static>
       	<link name="box_link">
 			<collision name="box_collision">
+				<pose>0 0 1 0 0 0</pose>
 				<geometry>
 					<box>
-						<size>7 2 0.05</size>
+						<size>0.05 7 2</size>
 					</box>
 				</geometry>
 			</collision>
 			<visual name="box_visual">
 				<geometry>
-					<box>
-						<size>7 2 0.05</size>
-					</box>
+					<mesh>
+                        <uri>wall.dae</uri>
+                    </mesh>
 				</geometry>
-				<material>
-					<ambient>0 0 0 1</ambient>
-					<diffuse>0 0 0 1</diffuse>
-					<specular>0 0 0 1</specular>
-				</material>
 			</visual>
       	</link>
     </model>

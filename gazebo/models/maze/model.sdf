@@ -3,8 +3,8 @@
   <model name="maze">
 
   <include>
-    <pose>-1.72 3.1 0.7 1.57 0 0</pose>
-    <uri>model://wall_5_2</uri>
+    <pose>-1.72 3.1 0 0 0 1.57</pose>
+    <uri>model://wall_7_2</uri>
   </include>
 
   <include>
