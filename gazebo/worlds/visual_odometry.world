@@ -125,6 +125,10 @@
             <uri>model://urban_story</uri>
         </include> 
 
+        <include>
+            <uri>model://checkerboard_plane</uri>
+        </include>
+
         <light type="directional" name="some_light">
             <pose>0 0 10 0 0 0</pose>
             <diffuse>0.7 0.7 0.7 0</diffuse>
