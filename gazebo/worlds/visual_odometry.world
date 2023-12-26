@@ -27,7 +27,7 @@
                 <scene>scene</scene>
                 <ambient_light>0.4 0.4 0.4</ambient_light>
                 <background_color>0.8 0.8 0.8</background_color>
-                <camera_pose>-6 0 12 0 0.5 0</camera_pose>
+                <camera_pose>-15 0 15 0 0.5 0</camera_pose>
                 <camera_clip>
                     <near>0.25</near>
                     <far>25000</far>
@@ -117,39 +117,13 @@
         </gui>
 
         <include>
-            <pose>0 0 0 0 0 0</pose>
-            <uri>model://ground_plane</uri>
-        </include>
-
-        <include>
-            <pose>0 0 0.2 0 0 0</pose>
+            <pose>0 0 11 0 0 0</pose>
             <uri>model://x1_config_7</uri>
         </include>
 
         <include>
-            <name>tree</name>
-            <pose>4 0 0 0 0 0</pose>
-            <uri>mode://Pine Tree</uri>
-        </include>
-        <include>
-            <name>tree_1</name>
-            <pose>4 4 0 0 0 0</pose>
-            <uri>mode://Pine Tree</uri>
-        </include>
-        <include>
-            <name>tree_2</name>
-            <pose>8 8 0 0 0 0</pose>
-            <uri>mode://Pine Tree</uri>
-        </include>
-        <include>
-            <name>tree_3</name>
-            <pose>8 12 0 0 0 0</pose>
-            <uri>mode://Pine Tree</uri>
-        </include>
-
-        <!-- <include>
-            <uri>https://fuel.gazebosim.org/1.0/makerspet/worlds/living_room</uri>
-        </include> -->
+            <uri>model://urban_story</uri>
+        </include> 
 
         <light type="directional" name="some_light">
             <pose>0 0 10 0 0 0</pose>
