@@ -114,15 +114,17 @@
                     <property key="cardBackground" type="string">#666666</property>
                 </gz-gui>
             </plugin>
-            <plugin filename="EntityTree" name="Entity tree">
-            </plugin>
 
-            <!-- Sim ortamı hakkında bilgi verir -->
+            <!-- <plugin filename="EntityTree" name="Entity tree"></plugin>
             <plugin filename="ComponentInspector" name="Component inspector">
                 <gz-gui>
                     <property type="string" key="state">docked</property>
                 </gz-gui>
+            </plugin> -->
+            <plugin filename="ImageDisplay" name="Image display">
+                <topic>/camera</topic>
             </plugin>
+
         </gui>
 
         <include>
