@@ -16,7 +16,7 @@ iris = load_iris()
 #########################################
 
 print("Data",iris['data'].shape) # Datanın boyutlarını gösterir.
-print("___________________________________________________________")
+print("_"*20)
 
 # Veriler Test ve eğitim olarak iki gruba ayrılır
 x_train, x_test, y_train, y_test = train_test_split(iris['data'], 
@@ -29,7 +29,9 @@ print("Y Test: ", y_test.shape)
 
 # Data frame yapısına çevrilir.
 iris_df = pd.DataFrame(x_train, columns=iris.feature_names)
-
+print("_"*20)
+print(iris_df.head())
+print("_"*20)
 # Saçılım matrix grafiği çizilir.
 # pd.plotting.scatter_matrix(iris_df, c = y_train, figsize=(15, 15), marker='o',
 #                         hist_kwds={'bins': 20}, s = 80, alpha = 0.8)
