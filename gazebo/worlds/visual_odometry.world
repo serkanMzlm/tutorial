@@ -115,12 +115,12 @@
                 </gz-gui>
             </plugin>
 
-            <!-- <plugin filename="EntityTree" name="Entity tree"></plugin>
+            <plugin filename="EntityTree" name="Entity tree"></plugin>
             <plugin filename="ComponentInspector" name="Component inspector">
                 <gz-gui>
                     <property type="string" key="state">docked</property>
                 </gz-gui>
-            </plugin> -->
+            </plugin>
             <plugin filename="ImageDisplay" name="Image display">
                 <topic>/camera</topic>
             </plugin>
