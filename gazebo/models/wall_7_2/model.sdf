@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.8">
+	<model name="wall_5_2">
+		<static>true</static>
+      	<link name="box_link">
+			<collision name="box_collision">
+				<pose>0 0 1 0 0 0</pose>
+				<geometry>
+					<box>
+						<size>0.05 7 2</size>
+					</box>
+				</geometry>
+			</collision>
+			<visual name="box_visual">
+				<geometry>
+					<mesh>
+                        <uri>wall.dae</uri>
+                    </mesh>
+				</geometry>
+			</visual>
+      	</link>
+    </model>
+</sdf>

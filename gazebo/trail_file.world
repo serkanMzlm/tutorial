@@ -1,6 +1,33 @@
 <?xml version="1.0" ?>
 <sdf version="1.6">
-  <world name="minimal_scene">
 
+  <world name="minimal_scene">
+    <!-- Dünya dinamiklerini simüle edebimek için gereklidir. -->
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+
+    <!-- Modellerin taşınması silinmesi vs. olaylar için gereklidir. -->
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+
+    <!-- Genel olarak simülasyon ortamında bulunan verilerin yayınlanmasını sağlar. -->
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+
+    <!-- Sim ortamında nesnelerin bir biri ile temasından sorumludur. -->
+    <plugin name='gz::sim::systems::Contact' filename='gz-sim-contact-system'/>
+
+    <!-- Sensörlerin çalışması için gerekli plaginler -->
+    <plugin name='gz::sim::systems::Imu' filename='gz-sim-imu-system'/>
+    <plugin name='gz::sim::systems::AirPressure' filename='gz-sim-air-pressure-system'/>
+    <plugin name='gz::sim::systems::Sensors' filename='gz-sim-sensors-system'>
+        <render_engine>ogre2</render_engine>
+    </plugin>
+
+    <include>
+      <uri>model://maze</uri>
+    </include>
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
   </world>
 </sdf>
+
+<!-- LitterBin -->

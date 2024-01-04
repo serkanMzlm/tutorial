@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.8">
+ 	 <model name="ground_plane">
+		<pose>0 0 0 0 -0 0</pose>
+		<static>true</static>
+		<link name='link'>
+			<collision name="collision">
+                <laser_retro>0</laser_retro>
+                <max_contacts>10</max_contacts>
+                <pose>0 0 0 0 -0 0</pose>
+                <geometry>
+                    <box>
+                        <size>60 60 0.05</size>
+                    </box>
+                </geometry>
+            </collision>
+
+            <visual name="visual">
+                <pose>0 0 0 0 -0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>untitled.dae</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+		</link>
+		<self_collide>false</self_collide>
+    </model>
+</sdf>
