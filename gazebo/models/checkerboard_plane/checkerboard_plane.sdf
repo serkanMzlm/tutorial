@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <sdf version="1.6">
 <model name="checkerboard_plane">
-  <static>true</static>
+  <!-- <static>true</static> -->
     <link name="link">
       <visual name="visual">
         <geometry>
@@ -10,6 +10,13 @@
           </mesh>
         </geometry>
       </visual>
+      <collision name="collision">
+        <geometry>
+          <box>
+						<size>2 2 0.1</size>
+					</box>
+        </geometry>
+      </collision>
     </link>
   </model>
 </sdf>
