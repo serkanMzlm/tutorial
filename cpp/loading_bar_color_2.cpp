@@ -10,12 +10,12 @@
 
 int main() {
     const int totalSteps = 51;
-
+    std::cout << std::endl;
     for (int i = 0; i <= totalSteps; ++i) {
         float percentage = static_cast<float>(i) / totalSteps * 100.0;
         int barWidth = 50;
 
-        std::cout << "\r" << "[" << i << "/" << totalSteps << "]" << std::setw(2) <<"|";
+        std::cout << "\r" << std::setw(2) << "[" << i << "/" << totalSteps << "]"  <<"|";
         int pos = barWidth * percentage / 100.0;
         for (int j = 0; j < barWidth; ++j) {
             if (j < pos) std::cout << "=";
@@ -33,6 +33,6 @@ int main() {
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl;
     return 0;
 }

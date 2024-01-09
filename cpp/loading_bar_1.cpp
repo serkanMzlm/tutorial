@@ -3,6 +3,7 @@
 #include <thread> 
 
 int main() {
+    std::cout << std::endl;
     const int totalSteps = 51;
 
     for (int i = 0; i <= totalSteps; ++i) {
@@ -21,6 +22,6 @@ int main() {
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl;
     return 0;
 }
