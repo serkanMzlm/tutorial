@@ -22,8 +22,8 @@
     - `loading_bar_3.cpp`
     ![image_3](images/loadbar_3.png)
     - `loading_bar_color_1.cpp`
-    ![image_4](images/loadbar_color_r_1.png)
     ![image_4](images/loadbar_color_y_1.png)
+    ![image_4](images/loadbar_color_r_1.png)
     ![image_4](images/loadbar_color_g_1.png)
     - `loading_bar_color_2.cpp`
     ![image_4](images/loadbar_color_r_2.png)
