@@ -3,7 +3,7 @@
   <model name="Pine Tree">
     <static>true</static>
     <link name="link">
-      <collision name="collision">
+      <!-- <collision name="collision">
         <pose>0 0 2.3 0 0 0</pose>
         <geometry>
           <cylinder>
@@ -11,7 +11,7 @@
             <length>4.5</length>
           </cylinder>
         </geometry>
-      </collision>
+      </collision> -->
       <visual name="branch">
         <geometry>
           <mesh>
