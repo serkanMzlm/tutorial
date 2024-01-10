@@ -37,6 +37,16 @@
     ![image_4](images/loadbar_color_g_2.png)
 
 - The code `g++ -o yaml_parser yaml_parser.cpp -lyaml-cpp` is used in the build process of packages that read data from YAML files
+- To align the specified texts on the same lines, use the content of write_on_the_same_line.cpp code
+```
+\033[B     Move the cursor one lines down
+\033[2B    Move the cursor two lines down
+ 
+\033[A      Move the cursor one lines up
+\033[2A     Move the cursor one lines up
+``` 
+
+
 
 ```
 #!/bin/bash
