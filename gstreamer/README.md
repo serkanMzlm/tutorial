@@ -14,6 +14,13 @@
 
 > **basic_tutorial_7.c:** Multithreading and Pad Availability
 
+> **basic_tutorial_8.c:** Short-cutting the pipeline
+
+> **basic_tutorial_9.c:** Multithreading and Pad Availability
+
+> **basic_tutorial_10.c:** Multithreading and Pad Availability
+
+
 ### Build
 ```
 gcc [code_file].c -o main `pkg-config --cflags --libs gstreamer-1.0`
