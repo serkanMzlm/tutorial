@@ -28,6 +28,11 @@
 
 ### Playback
 
+> **tutorial_1.c:** Playbin usage
+
+> **tutorial_2.c:** Subtitle management
+
+> **tutorial_3.c:** Short-cutting the pipeline
 
 ### Build
 
