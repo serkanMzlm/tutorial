@@ -16,9 +16,9 @@
 
 > **basic_tutorial_8.c:** Short-cutting the pipeline
 
-> **basic_tutorial_9.c:** Multithreading and Pad Availability
+> **basic_tutorial_9.c:** Media information gathering
 
-> **basic_tutorial_10.c:** Multithreading and Pad Availability
+> **basic_tutorial_10.c:** GStreamer tools
 
 
 ### Build

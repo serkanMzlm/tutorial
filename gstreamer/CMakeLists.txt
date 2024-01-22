@@ -6,6 +6,7 @@ find_package(GTK REQUIRED)
 
 pkg_check_modules(GSTREAMER REQUIRED gstreamer-1.0)
 pkg_check_modules(GSTREAMER_AUDIO REQUIRED gstreamer-audio-1.0)
+pkg_check_modules(GSTREAMER_PBUTILS REQUIRED gstreamer-pbutils-1.0)
 pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
 
 set(FILE_PATH "${PROJECT_SOURCE_DIR}/src/")
@@ -13,8 +14,11 @@ set(FILE_PATH "${PROJECT_SOURCE_DIR}/src/")
 include_directories(${GSTREAMER_INCLUDE_DIRS})
 include_directories(${GTK3_INCLUDE_DIRS} ${GSTREAMER_INCLUDE_DIRS})
 include_directories(${GSTREAMER_INCLUDE_DIRS} ${GSTREAMER_AUDIO_INCLUDE_DIRS})
+include_directories(${GSTREAMER_INCLUDE_DIRS} ${GSTREAMER_PBUTILS_INCLUDE_DIRS})
+
 link_directories(${GTK3_LIBRARY_DIRS} ${GSTREAMER_LIBRARY_DIRS})
 link_directories(${GSTREAMER_LIBRARY_DIRS} ${GSTREAMER_AUDIO_LIBRARY_DIRS})
+link_directories(${GSTREAMER_LIBRARY_DIRS} ${GSTREAMER_PBUTILS_LIBRARY_DIRS})
 
 add_executable(basic_tutorial_1 ${FILE_PATH}/basic_tutorial_1.c)
 target_link_libraries(basic_tutorial_1  ${GSTREAMER_LIBRARIES})
@@ -40,8 +44,8 @@ target_link_libraries(basic_tutorial_7  ${GSTREAMER_LIBRARIES})
 add_executable(basic_tutorial_8 ${FILE_PATH}/basic_tutorial_8.c)
 target_link_libraries(basic_tutorial_8  ${GSTREAMER_LIBRARIES} ${GSTREAMER_AUDIO_LIBRARIES})
 
-# add_executable(basic_tutorial_9 ${FILE_PATH}/basic_tutorial_9.c)
-# target_link_libraries(basic_tutorial_9  ${GSTREAMER_LIBRARIES})
+add_executable(basic_tutorial_9 ${FILE_PATH}/basic_tutorial_9.c)
+target_link_libraries(basic_tutorial_9  ${GSTREAMER_LIBRARIES} ${GSTREAMER_PBUTILS_LIBRARIES})
 
 # add_executable(basic_tutorial_10 ${FILE_PATH}/basic_tutorial_10.c)
 # target_link_libraries(basic_tutorial_10  ${GSTREAMER_LIBRARIES})
