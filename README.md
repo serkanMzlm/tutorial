@@ -14,6 +14,7 @@
 - IPC (Inter Process Commonication)
 - Serial
 - MAVLink
+- gstreamer
 
 ---
 
