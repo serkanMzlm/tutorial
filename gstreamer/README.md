@@ -38,7 +38,7 @@
 
 > **tutorial_5.c:** Color Balance
 
-> **tutorial_6.c:** Progressive streaming
+> **tutorial_6.c:** Audio visualization
 
 > **tutorial_7.c:** Progressive streaming
 
