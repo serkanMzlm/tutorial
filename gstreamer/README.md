@@ -18,7 +18,12 @@
 
 > **basic_tutorial_9.c:** Media information gathering
 
-> **basic_tutorial_10.c:** GStreamer tools
+> **basic_tutorial_10.c:** Streaming
+
+> **basic_tutorial_11.c:** Playback speed
+
+> **basic_tutorial_12.c:** Streaming
+
 
 
 ### Build

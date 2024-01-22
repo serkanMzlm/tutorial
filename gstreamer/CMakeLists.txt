@@ -47,11 +47,11 @@ target_link_libraries(basic_tutorial_8  ${GSTREAMER_LIBRARIES} ${GSTREAMER_AUDIO
 add_executable(basic_tutorial_9 ${FILE_PATH}/basic_tutorial_9.c)
 target_link_libraries(basic_tutorial_9  ${GSTREAMER_LIBRARIES} ${GSTREAMER_PBUTILS_LIBRARIES})
 
-# add_executable(basic_tutorial_10 ${FILE_PATH}/basic_tutorial_10.c)
-# target_link_libraries(basic_tutorial_10  ${GSTREAMER_LIBRARIES})
+add_executable(basic_tutorial_10 ${FILE_PATH}/basic_tutorial_10.c)
+target_link_libraries(basic_tutorial_10  ${GSTREAMER_LIBRARIES})
 
-# add_executable(basic_tutorial_11 ${FILE_PATH}/basic_tutorial_11.c)
-# target_link_libraries(basic_tutorial_11  ${GSTREAMER_LIBRARIES})
+add_executable(basic_tutorial_11 ${FILE_PATH}/basic_tutorial_11.c)
+target_link_libraries(basic_tutorial_11  ${GSTREAMER_LIBRARIES})
 
 # add_executable(basic_tutorial_12 ${FILE_PATH}/basic_tutorial_12.c)
 # target_link_libraries(basic_tutorial_12  ${GSTREAMER_LIBRARIES})
