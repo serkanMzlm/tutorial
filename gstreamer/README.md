@@ -1,38 +1,44 @@
 ## GSTREAMER
 
-> **basic_tutorial_1.c:** For GStreamer, hello world
+### Basic:
+> **tutorial_1.c:** For GStreamer, hello world
 
-> **basic_tutorial_2.c:** Source - sink - pipeline
+> **tutorial_2.c:** Source - sink - pipeline
 
-> **basic_tutorial_3.c:** Demuxer: Audio and video were separated.
+> **tutorial_3.c:** Demuxer: Audio and video were separated.
 
-> **basic_tutorial_4.c:** Time management
+> **tutorial_4.c:** Time management
 
-> **basic_tutorial_5.c:** GUI toolkit integration
+> **tutorial_5.c:** GUI toolkit integration
 
-> **basic_tutorial_6.c:** Media formats and Pad Capabilities `gst-inspect-1.0`
+> **tutorial_6.c:** Media formats and Pad Capabilities `gst-inspect-1.0`
 
-> **basic_tutorial_7.c:** Multithreading and Pad Availability
+> **tutorial_7.c:** Multithreading and Pad Availability
 
-> **basic_tutorial_8.c:** Short-cutting the pipeline
+> **tutorial_8.c:** Short-cutting the pipeline
 
-> **basic_tutorial_9.c:** Media information gathering
+> **tutorial_9.c:** Media information gathering
 
-> **basic_tutorial_10.c:** Streaming
+> **tutorial_10.c:** Streaming
 
-> **basic_tutorial_11.c:** Playback speed
+> **tutorial_11.c:** Playback speed
 
-> **basic_tutorial_12.c:** Streaming
+> **tutorial_12.c:** Streaming
 
+
+### Playback
 
 
 ### Build
+
 ```
 gcc [code_file].c -o main `pkg-config --cflags --libs gstreamer-1.0`
 ```
 
 ### Error Resolutions
+
 - **fatal error:** gtk/gtk.h: No such file or directory `#include <gtk/gtk.h>`
+
 ```
 sudo apt update
 sudo apt upgrade
