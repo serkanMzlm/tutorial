@@ -16,23 +16,23 @@ link_directories(${GTK3_LIBRARY_DIRS} ${GSTREAMER_LIBRARY_DIRS})
 add_executable(basic_tutorial_1 ${FILE_PATH}/basic_tutorial_1.c)
 target_link_libraries(basic_tutorial_1  ${GSTREAMER_LIBRARIES})
 
-# add_executable(basic_tutorial_2 ${FILE_PATH}/basic_tutorial_2.c)
-# target_link_libraries(basic_tutorial_2  ${GSTREAMER_LIBRARIES})
+add_executable(basic_tutorial_2 ${FILE_PATH}/basic_tutorial_2.c)
+target_link_libraries(basic_tutorial_2  ${GSTREAMER_LIBRARIES})
 
-# add_executable(basic_tutorial_3 ${FILE_PATH}/basic_tutorial_3.c)
-# target_link_libraries(basic_tutorial_3  ${GSTREAMER_LIBRARIES})
+add_executable(basic_tutorial_3 ${FILE_PATH}/basic_tutorial_3.c)
+target_link_libraries(basic_tutorial_3  ${GSTREAMER_LIBRARIES})
 
-# add_executable(basic_tutorial_4 ${FILE_PATH}/basic_tutorial_4.c)
-# target_link_libraries(basic_tutorial_4  ${GSTREAMER_LIBRARIES})
+add_executable(basic_tutorial_4 ${FILE_PATH}/basic_tutorial_4.c)
+target_link_libraries(basic_tutorial_4  ${GSTREAMER_LIBRARIES})
 
-# add_executable(basic_tutorial_5 ${FILE_PATH}/basic_tutorial_5.c)
-# target_link_libraries(basic_tutorial_5  ${GSTREAMER_LIBRARIES} ${GTK3_LIBRARIES})
+add_executable(basic_tutorial_5 ${FILE_PATH}/basic_tutorial_5.c)
+target_link_libraries(basic_tutorial_5  ${GSTREAMER_LIBRARIES} ${GTK3_LIBRARIES})
 
-# add_executable(basic_tutorial_6 ${FILE_PATH}/basic_tutorial_6.c)
-# target_link_libraries(basic_tutorial_6  ${GSTREAMER_LIBRARIES})
+add_executable(basic_tutorial_6 ${FILE_PATH}/basic_tutorial_6.c)
+target_link_libraries(basic_tutorial_6  ${GSTREAMER_LIBRARIES})
 
-# add_executable(basic_tutorial_7 ${FILE_PATH}/basic_tutorial_7.c)
-# target_link_libraries(basic_tutorial_7  ${GSTREAMER_LIBRARIES})
+add_executable(basic_tutorial_7 ${FILE_PATH}/basic_tutorial_7.c)
+target_link_libraries(basic_tutorial_7  ${GSTREAMER_LIBRARIES})
 
 # add_executable(basic_tutorial_8 ${FILE_PATH}/basic_tutorial_8.c)
 # target_link_libraries(basic_tutorial_8  ${GSTREAMER_LIBRARIES})
