@@ -36,7 +36,7 @@
 
 > **tutorial_4.c:** Progressive streaming
 
-> **tutorial_5.c:** Progressive streaming
+> **tutorial_5.c:** Color Balance
 
 > **tutorial_6.c:** Progressive streaming
 
