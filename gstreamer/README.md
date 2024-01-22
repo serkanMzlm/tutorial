@@ -40,7 +40,7 @@
 
 > **tutorial_6.c:** Audio visualization
 
-> **tutorial_7.c:** Progressive streaming
+> **tutorial_7.c:** Custom playbin sinks
 
 
 ### Build
