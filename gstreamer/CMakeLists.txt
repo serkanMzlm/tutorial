@@ -27,7 +27,7 @@ set(BASIC_TUTORIAL_SOURCES tutorial_1.c tutorial_2.c tutorial_3.c
                         tutorial_7.c tutorial_8.c tutorial_9.c 
                         tutorial_10.c tutorial_11.c)
 
-set(PLAYBACK_TUTORIAL_SOURCES tutorial_1.c tutorial_2.c)
+set(PLAYBACK_TUTORIAL_SOURCES tutorial_1.c tutorial_2.c tutorial_3.c)
 
 foreach(TUTORIAL_SOURCE ${BASIC_TUTORIAL_SOURCES})
     get_filename_component(TUTORIAL_NAME ${TUTORIAL_SOURCE} NAME_WE)

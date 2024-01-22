@@ -34,6 +34,15 @@
 
 > **tutorial_3.c:** Short-cutting the pipeline
 
+> **tutorial_4.c:** Progressive streaming
+
+> **tutorial_5.c:** Progressive streaming
+
+> **tutorial_6.c:** Progressive streaming
+
+> **tutorial_7.c:** Progressive streaming
+
+
 ### Build
 
 ```
