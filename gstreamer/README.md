@@ -56,5 +56,5 @@ gcc [code_file].c -o main `pkg-config --cflags --libs gstreamer-1.0`
 ```
 sudo apt update
 sudo apt upgrade
-sudo apt install sudo apt-get install libgtk-3-dev
+sudo apt install libgtk-3-dev
 ```
