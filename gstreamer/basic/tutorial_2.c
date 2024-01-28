@@ -8,23 +8,33 @@ int main (int argc, char *argv[]) {
 
     gst_init(&argc, &argv); 
     
+    /*
+    * Yeni element oluşturmak için kullanılır. İlk parametre 
+    * kaynak ikincisi ise takma ad. İkinci kısım NULL olursa
+    * sistem benzersiz bir ad atar.
+    */
     source = gst_element_factory_make("videotestsrc", "source");
     sink = gst_element_factory_make("autovideosink", "sink");
 
-    pipeline = gst_pipeline_new("test_pipeline");
+    pipeline = gst_pipeline_new("test_pipeline"); // pipeline oluşturulur
 
     if(!pipeline || !source || !sink){
         g_printerr("Not all elements could be created.\n");
         return -1;
     }
 
-    gst_bin_add_many(GST_BIN(pipeline), source, sink, NULL);
-    if (gst_element_link (source, sink) != TRUE) {
+    //Elementlerin birbirine bağlanmasını sağlar. (sırası önemlidir)
+    gst_bin_add_many(GST_BIN(pipeline), source, sink, NULL); 
+    if (gst_element_link (source, sink) != TRUE) { 
         g_printerr ("Elements could not be linked.\n");
         gst_object_unref (pipeline);
         return -1;
     }
 
+    /*
+    * Elementin özelliklerinin set edilmesini sağlar.
+    * `gst-inspect-1.0` ile elementin özellikleri öğrenilir.
+    */
     g_object_set (source, "pattern", 0, NULL);
     ret = gst_element_set_state (pipeline, GST_STATE_PLAYING);
     if (ret == GST_STATE_CHANGE_FAILURE) {

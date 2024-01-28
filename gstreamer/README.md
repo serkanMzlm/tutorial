@@ -1,5 +1,5 @@
 ## GSTREAMER
-
+- `gst-inspect-1.0 [ELEMENT]` öğe sınıflarını ve öğe plugin'lerini incelemek ve hakkında bilgi almak için kullanılır.
 ### Basic:
 > **tutorial_1.c:** For GStreamer, hello world
 
