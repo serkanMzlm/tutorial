@@ -1,5 +1,15 @@
 #include <gst/gst.h>
 
+/*
+* Bir veri hattında birden fazla veri varsa
+* bu verilerin birbirinden ilk olarak ayrılması 
+* lazımdır.
+*/
+
+/*
+* kullanılıcak elementler bir yapı içinde
+* tutularak daha kolay erişim sağlanır.
+*/
 typedef struct _CustomData {
   GstElement *pipeline;
   GstElement *source;
@@ -94,6 +104,10 @@ int main(int argc, char *argv[]) {
     }
 
 static void pad_added_handler (GstElement *src, GstPad *new_pad, CustomData *data) {
+    /*
+    * GstPad veri akışlarını temsil eden bir yapıdır. bir elemandan 
+    * diğerine veri akısını sağlayan bağlantı noktasını temsil eder.
+    */
     GstPad *sink_pad = gst_element_get_static_pad (data->convert, "sink");
     GstPadLinkReturn ret;
     GstCaps *new_pad_caps = NULL;

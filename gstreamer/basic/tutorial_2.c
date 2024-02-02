@@ -36,6 +36,7 @@ int main (int argc, char *argv[]) {
     * `gst-inspect-1.0` ile elementin özellikleri öğrenilir.
     */
     g_object_set (source, "pattern", 0, NULL);
+    
     ret = gst_element_set_state (pipeline, GST_STATE_PLAYING);
     if (ret == GST_STATE_CHANGE_FAILURE) {
         g_printerr ("Unable to set the pipeline to the playing state.\n");

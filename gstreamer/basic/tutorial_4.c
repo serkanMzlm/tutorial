@@ -43,6 +43,10 @@ int main(int argc, char *argv[]) {
 
   bus = gst_element_get_bus (data.playbin);
   do {
+    /*
+    * Belirli bir süre boyunca  veya belirli bir mesaj alana 
+    * kadar beklemek üzere tasarlanmıştır.
+    */
     msg = gst_bus_timed_pop_filtered (bus, 100 * GST_MSECOND,
         GST_MESSAGE_STATE_CHANGED | GST_MESSAGE_ERROR | GST_MESSAGE_EOS | GST_MESSAGE_DURATION);
 
@@ -112,6 +116,9 @@ static void handle_message (CustomData *data, GstMessage *msg) {
         data->playing = (new_state == GST_STATE_PLAYING);
 
         if (data->playing) {
+          /*
+          * Çeşitli sorgulamalar yapılmak için kullanılır.
+          */
           GstQuery *query;
           gint64 start, end;
           query = gst_query_new_seeking (GST_FORMAT_TIME);
