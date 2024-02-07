@@ -1,12 +1,12 @@
 #include <gst/gst.h>
 
 typedef struct _CustomData {
-  GstElement *playbin;   // Our one and only element 
-  gboolean playing;      // Are we in the PLAYING state? 
-  gboolean terminate;    // Should we terminate execution? 
-  gboolean seek_enabled; // Is seeking enabled for this media? 
-  gboolean seek_done;    // Have we performed the seek already? 
-  gint64 duration;       // How long does this media last, in nanoseconds 
+  GstElement *playbin;   
+  gboolean playing;      
+  gboolean terminate;    
+  gboolean seek_enabled; 
+  gboolean seek_done;    
+  gint64 duration;       
 } CustomData;
 
 static void handle_message (CustomData *data, GstMessage *msg);
@@ -43,10 +43,6 @@ int main(int argc, char *argv[]) {
 
   bus = gst_element_get_bus (data.playbin);
   do {
-    /*
-    * Belirli bir süre boyunca  veya belirli bir mesaj alana 
-    * kadar beklemek üzere tasarlanmıştır.
-    */
     msg = gst_bus_timed_pop_filtered (bus, 100 * GST_MSECOND,
         GST_MESSAGE_STATE_CHANGED | GST_MESSAGE_ERROR | GST_MESSAGE_EOS | GST_MESSAGE_DURATION);
 
