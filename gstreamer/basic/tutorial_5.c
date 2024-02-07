@@ -99,7 +99,6 @@ static gboolean refresh_ui (CustomData *data) {
   }
 
   if (gst_element_query_position (data->playbin, GST_FORMAT_TIME, &current)) {
-     * (which would trigger a seek the user has not requested) */
     g_signal_handler_block (data->slider, data->slider_update_signal_id);
     gtk_range_set_value (GTK_RANGE (data->slider), (gdouble)current / GST_SECOND);
     /* Re-enable the signal */
