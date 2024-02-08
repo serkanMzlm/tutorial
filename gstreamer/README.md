@@ -62,8 +62,6 @@ sudo apt install libgtk-3-dev
 
 ## Genel Bilgiler
 
----
-
 GStreamer, çoklu ortam işleme çerçevesidir ve ses, video ve diğer multimedya verilerini işlemek, kodlamak, dönüştürmek ve akış oluşturmak için kullanılan bir yazılım kütüphanesidir.
 
 **Elements:** Medya işleme işlevselliğini sağlayan temel yapı taşlarıdır. Bu öğeler, medya dosyalarını okumak, kodlamak, dönüştürmek, sesi işlemek, videoyu oynatmak gibi çeşitli görevleri yerine getirir.
@@ -71,6 +69,10 @@ GStreamer, çoklu ortam işleme çerçevesidir ve ses, video ve diğer multimedy
 ![bin-element.png](image/bin-element.png)
 
 **Pad:** Öğeler arasındaki veri akışı pad'lar aracılığıyla gerçekleşir. Pads, öğeler arasındaki bağlantıları ve veri akışını tanımlar. Bir pad, bir öğenin işlevselliğini ve rolünü belirler. Örneğin, bir öğe genellikle giriş pad'ına veri alır ve çıkış pad'ından veri gönderir.
+
+**GST_DEBUG:** Debug işleminin derecesini berliler. `gst-launch-1.0 --gst-debug-help` 
+
+![bin-element.png](image/debug.png)
 
 **GstQuery:** Verinin sorgulanmasını sağlar.
 
