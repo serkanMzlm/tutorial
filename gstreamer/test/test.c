@@ -1,12 +1,11 @@
 #include <gst/gst.h>
-#include "stdio.h"
 
 int main(int argc, char *argv[]) {
-    printf("deneme");
     GstElement *pipeline, *source, *depay, *parse, *convert, *sink;
     GstBus *bus;
     GstMessage *msg;
     GstStateChangeReturn ret;
+
     gst_init(&argc, &argv);
 
     pipeline = gst_pipeline_new("rtsp_pipeline");
@@ -23,7 +22,7 @@ int main(int argc, char *argv[]) {
     g_object_set(G_OBJECT(sink), "host", "10.223.9.9", "port", 3000, NULL);
 
     gst_bin_add_many(GST_BIN(pipeline), source, sink, NULL);
-    if (!gst_element_link(source, sink)) {
+    if (!gst_element_link_many(source, sink, NULL)) {
         g_printerr("Elements could not be linked.\n");
         gst_object_unref(pipeline);
         return -1;

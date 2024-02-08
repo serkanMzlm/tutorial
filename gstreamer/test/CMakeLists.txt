@@ -15,6 +15,6 @@ link_directories(${GSTREAMER_LIBRARY_DIRS}
                  ${GSTREAMER_AUDIO_LIBRARY_DIRS}
                  ${GSTREAMER_PBUTILS_LIBRARY_DIRS})
 
-add_executable(test_rtsp test/test_rtsp.c)
+add_executable(test_rtsp test_rtsp.c)
 target_link_libraries(test_rtsp ${GSTREAMER_LIBRARIES} ${GSTREAMER_AUDIO_LIBRARIES} 
                                                         ${GSTREAMER_PBUTILS_LIBRARIES})
