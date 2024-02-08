@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
     gst_bin_add_many(GST_BIN(pipeline), source, depay, parser, decoder, convert, encoder, pay, sink, NULL);
 
     /* Link the elements */
-    if (!gst_element_link_many(source, depay, parser, decoder, convert, encoder, pay, sink, NULL)) {
+    if (!gst_element_link_many(source, depay, parser, decoder, convert, encoder, pay, sink, NULL) != TRUE) {
         g_printerr("Elements could not be linked.\n");
         gst_object_unref(pipeline);
         return -1;

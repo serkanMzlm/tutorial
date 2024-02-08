@@ -223,13 +223,23 @@ gst-launch-1.0 -v rtspsrc location=rtsp://192.168.144.25:8554/main.264 ! rtph265
 
 ```bash
 gst-launch-1.0 -v rtspsrc location=rtsp://192.168.144.25:8554/main.264  latency=100 ! rtph265depay ! h265parse ! avdec_h265 ! videoconvert ! jpegenc ! rtpjpegpay ! udpsink host=[IP] port=3000
+```
+
+```bash
 gst-launch-1.0 -v rtspsrc location=rtsp://192.168.144.25:8554/main.264  latency=10 ! rtph265depay ! h265parse ! avdec_h265 ! videoconvert ! nvvidconv ! 'video/x-raw(memory:NVMM),format=NV12' ! nvv4l2h265enc ! h265parse ! rtph265pay config-interval=1 pt=96 ! udpsink host=[IP] port=3000
+```
 
+```bash
 gst-launch-1.0 -v rtspsrc location=rtsp://192.168.144.25:8554/main.264  latency=10 ! rtph265depay ! h265parse ! avdec_h265 ! videoconvert ! nvvidconv ! 'video/x-raw(memory:NVMM),format=NV12' ! nvv4l2h265enc ! h265parse ! rtph265pay config-interval=1 pt=96 ! udpsink host=[IP] port=3000
+```
 
+```bash
 gst-launch-1.0 -v rtspsrc location=rtsp://192.168.144.25:8554/main.264  latency=10 ! rtph265depay ! h265parse ! avdec_h265 ! videoconvert ! queue  ! nvvidconv ! 'video/x-raw(memory:NVMM),format=NV12' ! nvv4l2h265enc bitrate=600000 ! h265parse ! rtph265pay config-interval=1 pt=96 ! udpsink host=[IP] port=3000
-
+```
+```bash
 gst-launch-1.0 -v rtspsrc location=rtsp://192.168.144.25:8554/main.264  latency=10 ! rtph265depay ! h265parse ! avdec_h265 ! videoconvert ! queue  ! nvvidconv ! 'video/x-raw(memory:NVMM),format=NV12' ! nvv4l2h265enc bitrate=600000 ! h265parse ! rtph265pay config-interval=1 pt=96 ! udpsink host=[IP] port=3000
+```
 
+```bash
 gst-launch-1.0 -v rtspsrc location=rtsp://192.168.144.25:8554/main.264  latency=50 ! udpsink host=[IP] port=3000
 ```

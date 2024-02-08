@@ -19,6 +19,6 @@ add_executable(test_rtsp test_rtsp.c)
 target_link_libraries(test_rtsp ${GSTREAMER_LIBRARIES} ${GSTREAMER_AUDIO_LIBRARIES} 
                                                         ${GSTREAMER_PBUTILS_LIBRARIES})
 
-add_executable(test_rtsp_2 test_rtsp_2.c)
-target_link_libraries(test_rtsp_2 ${GSTREAMER_LIBRARIES} ${GSTREAMER_AUDIO_LIBRARIES} 
-                                                        ${GSTREAMER_PBUTILS_LIBRARIES})
+# add_executable(test_rtsp_2 test_rtsp_2.c)
+# target_link_libraries(test_rtsp_2 ${GSTREAMER_LIBRARIES} ${GSTREAMER_AUDIO_LIBRARIES} 
+#                                                         ${GSTREAMER_PBUTILS_LIBRARIES})
