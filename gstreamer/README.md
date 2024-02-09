@@ -1,7 +1,5 @@
 # GSTREAMER
 
-## Genel Bilgiler
-
 GStreamer, çoklu ortam işleme çerçevesidir ve ses, video ve diğer multimedya verilerini işlemek, kodlamak, dönüştürmek ve akış oluşturmak için kullanılan bir yazılım kütüphanesidir.
 
 **Elements:** Medya işleme işlevselliğini sağlayan temel yapı taşlarıdır. Bu öğeler, medya dosyalarını okumak, kodlamak, dönüştürmek, sesi işlemek, videoyu oynatmak gibi çeşitli görevleri yerine getirir.
