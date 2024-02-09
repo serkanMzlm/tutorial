@@ -1,64 +1,4 @@
-## GSTREAMER
-- `gst-inspect-1.0 [ELEMENT]` öğe sınıflarını ve öğe plugin'lerini incelemek ve hakkında bilgi almak için kullanılır.
-### Basic:
-> **tutorial_1.c:** For GStreamer, hello world
-
-> **tutorial_2.c:** Source - sink - pipeline
-
-> **tutorial_3.c:** Demuxer: Audio and video were separated.
-
-> **tutorial_4.c:** Time management
-
-> **tutorial_5.c:** GUI toolkit integration
-
-> **tutorial_6.c:** Media formats and Pad Capabilities `gst-inspect-1.0`
-
-> **tutorial_7.c:** Multithreading and Pad Availability
-
-> **tutorial_8.c:** Short-cutting the pipeline
-
-> **tutorial_9.c:** Media information gathering
-
-> **tutorial_10.c:** Streaming
-
-> **tutorial_11.c:** Playback speed
-
-> **tutorial_12.c:** Streaming
-
-
-### Playback
-
-> **tutorial_1.c:** Playbin usage
-
-> **tutorial_2.c:** Subtitle management
-
-> **tutorial_3.c:** Short-cutting the pipeline
-
-> **tutorial_4.c:** Progressive streaming
-
-> **tutorial_5.c:** Color Balance
-
-> **tutorial_6.c:** Audio visualization
-
-> **tutorial_7.c:** Custom playbin sinks
-
-
-### Build
-
-```
-gcc [code_file].c -o main `pkg-config --cflags --libs gstreamer-1.0`
-```
-
-### Error Resolutions
-
-- **fatal error:** gtk/gtk.h: No such file or directory `#include <gtk/gtk.h>`
-
-```
-sudo apt update
-sudo apt upgrade
-sudo apt install libgtk-3-dev
-```
-
+# GSTREAMER
 
 ## Genel Bilgiler
 
@@ -76,29 +16,26 @@ GStreamer, çoklu ortam işleme çerçevesidir ve ses, video ve diğer multimedy
 
 **GstQuery:** Verinin sorgulanmasını sağlar.
 
-**`gst-discoverer-1.0` :** GStreamer Multimedya Çerçevesi'nde medya dosyalarının özelliklerini ve içeriğini keşfetmek için kullanılan bir araçtır.
+- **`gst-discoverer-1.0` :** GStreamer Multimedya Çerçevesi'nde medya dosyalarının özelliklerini ve içeriğini keşfetmek için kullanılan bir araçtır.
+
+- **`gst-inspect-1.0` :** öğe sınıflarını ve öğe plugin'lerini incelemek ve hakkında bilgi almak için kullanılır.
 
 ```bash
-# Terminal üzerinden c dosyasını build etmek için kullanılan komutlar.
-gcc main.c -o main `pkg-config --cflags --libs gstreamer-1.0`
-gcc main.c -o main `pkg-config --cflags --libs gtk+-3.0 gstreamer-1.0`
-#Bu komut sayesinde  parametreleri öğreniriz.
 gst-inspect nvarguscamerasrc 
- 
 gst-discoverer-1.0  rtsp://192.168.144.25:8554/main.264
 ```
 
 - source -> filter -> sink şeklinde kodlaması yapılır.
-- `gst-launch-1.0 videotestsrc ! ximagesink` doğru bir şekilde kullanıldığını göstermek için kullanılır.
-- `sudo service nvargus-daemon restart` Kamera servisini resetlememizi sağlar.
-- `v4l2-ctl --list-devices` Bağlı olan çihazları listeler
-- `v4l2-ctl -d /dev/video0 --all` Belirtilen çihaz hakkında detaylı bilgi verir.
-- `v4l2-ctl -d /dev/video0 --list-formats-ext` En temel ve anlaşılır bilgilerini gösterir.
+- `gst-launch-1.0 videotestsrc ! ximagesink` gstreamer kontrol etmek için kullanılır.
+- **`-v ya da --verbose` :** Çıktının daha ayrıntılı olmasını sağlar.
+- `sudo service nvargus-daemon restart` kamera servisini resetlememizi sağlar.
+- `v4l2-ctl --list-devices` bağlı olan çihazları listeler
+- `v4l2-ctl -d /dev/video0 --all` belirtilen çihaz hakkında detaylı bilgi verir.
+- `v4l2-ctl -d /dev/video0 --list-formats-ext` en temel ve anlaşılır bilgilerini gösterir.
 - `export DISPLAY=:0` ssh ile doğrudan bilgisayarda yazılamadığı durumlarda kullanılır.
 
 ## C
 
----
 
 - **`gst_init` :** GStreamer'ı başlatmak ve kullanılabilir eklentileri yüklemek için kullanılan işlevdir.
 - **`gst_parse_launch`** : Bir GStreamer pipeline'ını bir metin dizisi olarak tanımlayarak ve bu metni yürütülür bir hale getirerek bir GStreamer pipeline'ını oluşturmayı sağlayan bir işlevdir. Pipeline kısa olduğu durumlarda kullanılışlıdır.
@@ -202,7 +139,7 @@ gst-launch-1.0 rtspsrc location=rtsp://192.168.144.25:8554/main.264 latency=100 
 ```
 
 ```bash
- gst-launch-1.0 -v rtspsrc location=rtsp://192.168.144.25:8554/main.264 ! rtph265depay ! h265parse ! avdec_h265  ! autovideosink
+gst-launch-1.0 -v rtspsrc location=rtsp://192.168.144.25:8554/main.264 ! rtph265depay ! h265parse ! avdec_h265  ! autovideosink
 ```
 
 ```bash
@@ -242,4 +179,69 @@ gst-launch-1.0 -v rtspsrc location=rtsp://192.168.144.25:8554/main.264  latency=
 
 ```bash
 gst-launch-1.0 -v rtspsrc location=rtsp://192.168.144.25:8554/main.264  latency=50 ! udpsink host=[IP] port=3000
+```
+
+```bash
+gst-launch-1.0 -v rtspsrc location=rtsp://192.168.144.25:8554/main.264  latency=1 ! rtph265depay ! h265parse ! avdec_h265 !  nvvidconv ! 'video/x-raw(memory:NVMM),width=1280,height=720' ! nvv4l2h264enc  bitrate=600000 insert-sps-pps=1 idrinterval=15 ! h264parse ! rtph264pay config-interval=1 pt=96 ! udpsink host=10.223.9.9 port=3000 sync=false async=false
+```
+
+### Basic:
+> **tutorial_1.c:** For GStreamer, hello world
+
+> **tutorial_2.c:** Source - sink - pipeline
+
+> **tutorial_3.c:** Demuxer: Audio and video were separated.
+
+> **tutorial_4.c:** Time management
+
+> **tutorial_5.c:** GUI toolkit integration
+
+> **tutorial_6.c:** Media formats and Pad Capabilities `gst-inspect-1.0`
+
+> **tutorial_7.c:** Multithreading and Pad Availability
+
+> **tutorial_8.c:** Short-cutting the pipeline
+
+> **tutorial_9.c:** Media information gathering
+
+> **tutorial_10.c:** Streaming
+
+> **tutorial_11.c:** Playback speed
+
+> **tutorial_12.c:** Streaming
+
+
+### Playback
+
+> **tutorial_1.c:** Playbin usage
+
+> **tutorial_2.c:** Subtitle management
+
+> **tutorial_3.c:** Short-cutting the pipeline
+
+> **tutorial_4.c:** Progressive streaming
+
+> **tutorial_5.c:** Color Balance
+
+> **tutorial_6.c:** Audio visualization
+
+> **tutorial_7.c:** Custom playbin sinks
+
+
+### Build
+
+```bash
+# Terminal üzerinden c dosyasını build etmek için kullanılan komutlar.
+gcc main.c -o main `pkg-config --cflags --libs gstreamer-1.0`
+gcc main.c -o main `pkg-config --cflags --libs gtk+-3.0 gstreamer-1.0`
+```
+
+### Error Resolutions
+
+- **fatal error:** gtk/gtk.h: No such file or directory `#include <gtk/gtk.h>`
+
+```bash
+sudo apt update
+sudo apt upgrade
+sudo apt install libgtk-3-dev
 ```

@@ -83,4 +83,4 @@ int main(int argc, char *argv[]) {
 }
 
 
-gst-launch-1.0 -v rptspsrc location= rtsp:rtsp://192.168.144.25:8554/main.2 ! decodebin ! autovideoconvert ! x264enc tune=zerolatency ! rtph264pay ! udpsink host=10.223.9.9 port=3000
+// gst-launch-1.0 -v rptspsrc location= rtsp:rtsp://192.168.144.25:8554/main.2 ! decodebin ! autovideoconvert ! x264enc tune=zerolatency ! rtph264pay ! udpsink host=10.223.9.9 port=3000"
