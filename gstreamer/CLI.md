@@ -51,8 +51,6 @@ gst-launch-1.0 rtspsrc location=rtsp://192.168.144.25:8554/main.264  latency=50 
 ```bash
 gst-launch-1.0 rtspsrc location=rtsp://192.168.144.25:8554/main.264 latency=100 ! decodebin ! videoconvert ! video/x-raw,format=I420 ! udpsink host=10.223.6.6 port=5000
 ```
-
-- RTSP -> UDP (jpeg)
     - `dec_h265` yerine `avdec_h265` yazılabilir.
 ```bash
 gst-launch-1.0 rtspsrc location=rtsp://192.168.144.25:8554/main.264 latency=100  ! rtph265depay ! h265parse ! dec_h265 ! videoconvert ! jpegenc ! rtpjpegpay ! udpsink host=10.223.6.6 port=3000
