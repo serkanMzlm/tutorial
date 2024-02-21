@@ -27,7 +27,6 @@ gst-launch-1.0 -v udpsrc port=3000 ! application/x-rtp,encoding-name=H265,payloa
 gst-launch-1.0 udpsrc port=5000 ! application/x-rtp,media=video,clock-rate=90000,encoding-name=H264,payload=96 ! rtph264depay ! avdec_h264 ! autovideosink
 ```
 
-### SIYI kamera RTSP -> Ekran
 ```bash
 gst-launch-1.0 rtspsrc location=rtsp://192.168.144.25:8554/main.264 latency=100 ! decodebin ! autovideosink
 ```
@@ -37,11 +36,6 @@ gst-launch-1.0 -v rtspsrc location=rtsp://192.168.144.25:8554/main.264 latency=1
 
 ```bash
 gst-launch-1.0 rtspsrc location=rtsp://192.168.144.25:8554/main.264 ! rtph265depay ! h265parse ! avdec_h265  ! autovideosink
-```
-
-### SIYI kamera RTSP -> UDP
-```bash
-gst-launch-1.0 rtspsrc location=rtsp://192.168.144.25:8554/main.264  latency=50 ! udpsink host= port=3000
 ```
 
 ```bash
@@ -82,10 +76,4 @@ gst-launch-1.0 rtspsrc location=rtsp://192.168.144.25:8554/main.264  latency=1 !
 
 ```bash
 gst-launch-1.0 rtspsrc location=rtsp://192.168.144.25:8554/main.264  latency=10 ! rtph265depay ! h265parse ! avdec_h265 ! videoflip method=rotate-180 ! nvvidconv ! 'video/x-raw(memory:NVMM),format=NV12' ! nvv4l2h264enc bitrate=600000 ! h264parse ! rtph264pay config-interval=1 pt=96 ! udpsink host= port=3000
-```
-
-### NVIDIA
-- Kamradan görütü almak için `nvarguscamerasrc sensor_id=0` kullanılır
-```bash
-gst-launch-1.0 nvarguscamerasrc sensor_id=0! 'video/x-raw(memory:NVMM),width=1920, height=1080, framerate=30/1, format=NV12' ! nvvidconv ! omxh264enc iframeinterval=15 control-rate=constant profile=baseline ! video/x-h264, stream-format=byte-stream ! rtph264pay ! udpsink host= port=5000
 ```
