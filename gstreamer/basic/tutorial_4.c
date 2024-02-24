@@ -1,12 +1,12 @@
 #include <gst/gst.h>
 
 typedef struct _CustomData {
-  GstElement *playbin;   // Our one and only element 
-  gboolean playing;      // Are we in the PLAYING state? 
-  gboolean terminate;    // Should we terminate execution? 
-  gboolean seek_enabled; // Is seeking enabled for this media? 
-  gboolean seek_done;    // Have we performed the seek already? 
-  gint64 duration;       // How long does this media last, in nanoseconds 
+  GstElement *playbin;   
+  gboolean playing;      
+  gboolean terminate;    
+  gboolean seek_enabled; 
+  gboolean seek_done;    
+  gint64 duration;       
 } CustomData;
 
 static void handle_message (CustomData *data, GstMessage *msg);
@@ -112,6 +112,9 @@ static void handle_message (CustomData *data, GstMessage *msg) {
         data->playing = (new_state == GST_STATE_PLAYING);
 
         if (data->playing) {
+          /*
+          * Çeşitli sorgulamalar yapılmak için kullanılır.
+          */
           GstQuery *query;
           gint64 start, end;
           query = gst_query_new_seeking (GST_FORMAT_TIME);

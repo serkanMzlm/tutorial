@@ -1,5 +1,40 @@
-## GSTREAMER
-- `gst-inspect-1.0 [ELEMENT]` öğe sınıflarını ve öğe plugin'lerini incelemek ve hakkında bilgi almak için kullanılır.
+# GSTREAMER
+
+GStreamer, çoklu ortam işleme çerçevesidir ve ses, video ve diğer multimedya verilerini işlemek, kodlamak, dönüştürmek ve akış oluşturmak için kullanılan bir yazılım kütüphanesidir.
+
+**Elements:** Medya işleme işlevselliğini sağlayan temel yapı taşlarıdır. Bu öğeler, medya dosyalarını okumak, kodlamak, dönüştürmek, sesi işlemek, videoyu oynatmak gibi çeşitli görevleri yerine getirir.
+
+![bin-element.png](image/bin-element.png)
+
+**Pad:** Öğeler arasındaki veri akışı pad'lar aracılığıyla gerçekleşir. Pads, öğeler arasındaki bağlantıları ve veri akışını tanımlar. Bir pad, bir öğenin işlevselliğini ve rolünü belirler. Örneğin, bir öğe genellikle giriş pad'ına veri alır ve çıkış pad'ından veri gönderir.
+
+**GST_DEBUG:** Debug işleminin derecesini berliler. `gst-launch-1.0 --gst-debug-help` 
+
+![bin-element.png](image/debug.png)
+
+**GstQuery:** Verinin sorgulanmasını sağlar.
+
+- **`gst-discoverer-1.0` :** GStreamer Multimedya Çerçevesi'nde medya dosyalarının özelliklerini ve içeriğini keşfetmek için kullanılan bir araçtır.
+
+- **`gst-inspect-1.0` :** öğe sınıflarını ve öğe plugin'lerini incelemek ve hakkında bilgi almak için kullanılır.
+
+```bash
+gst-inspect nvarguscamerasrc 
+gst-discoverer-1.0  rtsp://192.168.144.25:8554/main.264
+```
+
+- source -> filter -> sink şeklinde kodlaması yapılır.
+- `gst-launch-1.0 videotestsrc ! ximagesink` gstreamer kontrol etmek için kullanılır.
+- **`-v ya da --verbose` :** Çıktının daha ayrıntılı olmasını sağlar.
+- `sudo service nvargus-daemon restart` kamera servisini resetlememizi sağlar.
+- `v4l2-ctl --list-devices` bağlı olan çihazları listeler
+- `v4l2-ctl -d /dev/video0 --all` belirtilen çihaz hakkında detaylı bilgi verir.
+- `v4l2-ctl -d /dev/video0 --list-formats-ext` en temel ve anlaşılır bilgilerini gösterir.
+- `export DISPLAY=:0` ssh ile doğrudan bilgisayarda yazılamadığı durumlarda kullanılır.
+
+- Örnek terminal kodları -> CLI.md
+- C ile nasıl programlandığına bakmak için -> c_syntax.md 
+
 ### Basic:
 > **tutorial_1.c:** For GStreamer, hello world
 
@@ -45,15 +80,17 @@
 
 ### Build
 
-```
-gcc [code_file].c -o main `pkg-config --cflags --libs gstreamer-1.0`
+```bash
+# Terminal üzerinden c dosyasını build etmek için kullanılan komutlar.
+gcc main.c -o main `pkg-config --cflags --libs gstreamer-1.0`
+gcc main.c -o main `pkg-config --cflags --libs gtk+-3.0 gstreamer-1.0`
 ```
 
 ### Error Resolutions
 
 - **fatal error:** gtk/gtk.h: No such file or directory `#include <gtk/gtk.h>`
 
-```
+```bash
 sudo apt update
 sudo apt upgrade
 sudo apt install libgtk-3-dev

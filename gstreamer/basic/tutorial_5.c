@@ -4,55 +4,47 @@
 #include <gst/gst.h>
 #include <gdk/gdk.h>
 
-/* Structure to contain all our information, so we can pass it around */
 typedef struct _CustomData {
-  GstElement *playbin;           /* Our one and only pipeline */
+  GstElement *playbin;      
 
-  GtkWidget *sink_widget;         /* The widget where our video will be displayed */
-  GtkWidget *slider;              /* Slider widget to keep track of current position */
-  GtkWidget *streams_list;        /* Text widget to display info about the streams */
-  gulong slider_update_signal_id; /* Signal ID for the slider update signal */
+  GtkWidget *sink_widget;         
+  GtkWidget *slider;              
+  GtkWidget *streams_list;        
+  gulong slider_update_signal_id; 
 
-  GstState state;                 /* Current state of the pipeline */
-  gint64 duration;                /* Duration of the clip, in nanoseconds */
+  GstState state;                 
+  gint64 duration;                
 } CustomData;
 
-/* This function is called when the PLAY button is clicked */
 static void play_cb (GtkButton *button, CustomData *data) {
   gst_element_set_state (data->playbin, GST_STATE_PLAYING);
 }
 
-/* This function is called when the PAUSE button is clicked */
 static void pause_cb (GtkButton *button, CustomData *data) {
   gst_element_set_state (data->playbin, GST_STATE_PAUSED);
 }
 
-/* This function is called when the STOP button is clicked */
 static void stop_cb (GtkButton *button, CustomData *data) {
   gst_element_set_state (data->playbin, GST_STATE_READY);
 }
 
-/* This function is called when the main window is closed */
 static void delete_event_cb (GtkWidget *widget, GdkEvent *event, CustomData *data) {
   stop_cb (NULL, data);
   gtk_main_quit ();
 }
 
-/* This function is called when the slider changes its position. We perform a seek to the
- * new position here. */
 static void slider_cb (GtkRange *range, CustomData *data) {
   gdouble value = gtk_range_get_value (GTK_RANGE (data->slider));
   gst_element_seek_simple (data->playbin, GST_FORMAT_TIME, GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT,
       (gint64)(value * GST_SECOND));
 }
 
-/* This creates all the GTK+ widgets that compose our application, and registers the callbacks */
 static void create_ui (CustomData *data) {
-  GtkWidget *main_window;  /* The uppermost window, containing all other windows */
-  GtkWidget *main_box;     /* VBox to hold main_hbox and the controls */
-  GtkWidget *main_hbox;    /* HBox to hold the video sink and the stream info text widget */
-  GtkWidget *controls;     /* HBox to hold the buttons and the slider */
-  GtkWidget *play_button, *pause_button, *stop_button; /* Buttons */
+  GtkWidget *main_window;  
+  GtkWidget *main_box;     
+  GtkWidget *main_hbox;    
+  GtkWidget *controls;     
+  GtkWidget *play_button, *pause_button, *stop_button; 
 
   main_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   g_signal_connect (G_OBJECT (main_window), "delete-event", G_CALLBACK (delete_event_cb), data);
@@ -92,29 +84,22 @@ static void create_ui (CustomData *data) {
   gtk_widget_show_all (main_window);
 }
 
-/* This function is called periodically to refresh the GUI */
 static gboolean refresh_ui (CustomData *data) {
   gint64 current = -1;
 
-  /* We do not want to update anything unless we are in the PAUSED or PLAYING states */
   if (data->state < GST_STATE_PAUSED)
     return TRUE;
 
-  /* If we didn't know it yet, query the stream duration */
   if (!GST_CLOCK_TIME_IS_VALID (data->duration)) {
     if (!gst_element_query_duration (data->playbin, GST_FORMAT_TIME, &data->duration)) {
       g_printerr ("Could not query current duration.\n");
     } else {
-      /* Set the range of the slider to the clip duration, in SECONDS */
       gtk_range_set_range (GTK_RANGE (data->slider), 0, (gdouble)data->duration / GST_SECOND);
     }
   }
 
   if (gst_element_query_position (data->playbin, GST_FORMAT_TIME, &current)) {
-    /* Block the "value-changed" signal, so the slider_cb function is not called
-     * (which would trigger a seek the user has not requested) */
     g_signal_handler_block (data->slider, data->slider_update_signal_id);
-    /* Set the position of the slider to the current pipeline position, in SECONDS */
     gtk_range_set_value (GTK_RANGE (data->slider), (gdouble)current / GST_SECOND);
     /* Re-enable the signal */
     g_signal_handler_unblock (data->slider, data->slider_update_signal_id);
@@ -122,40 +107,30 @@ static gboolean refresh_ui (CustomData *data) {
   return TRUE;
 }
 
-/* This function is called when new metadata is discovered in the stream */
 static void tags_cb (GstElement *playbin, gint stream, CustomData *data) {
-  /* We are possibly in a GStreamer working thread, so we notify the main
-   * thread of this event through a message in the bus */
   gst_element_post_message (playbin,
     gst_message_new_application (GST_OBJECT (playbin),
       gst_structure_new_empty ("tags-changed")));
 }
 
-/* This function is called when an error message is posted on the bus */
 static void error_cb (GstBus *bus, GstMessage *msg, CustomData *data) {
   GError *err;
   gchar *debug_info;
 
-  /* Print error details on the screen */
   gst_message_parse_error (msg, &err, &debug_info);
   g_printerr ("Error received from element %s: %s\n", GST_OBJECT_NAME (msg->src), err->message);
   g_printerr ("Debugging information: %s\n", debug_info ? debug_info : "none");
   g_clear_error (&err);
   g_free (debug_info);
 
-  /* Set the pipeline to READY (which stops playback) */
   gst_element_set_state (data->playbin, GST_STATE_READY);
 }
 
-/* This function is called when an End-Of-Stream message is posted on the bus.
- * We just set the pipeline to READY (which stops playback) */
 static void eos_cb (GstBus *bus, GstMessage *msg, CustomData *data) {
   g_print ("End-Of-Stream reached.\n");
   gst_element_set_state (data->playbin, GST_STATE_READY);
 }
 
-/* This function is called when the pipeline changes states. We use it to
- * keep track of the current state. */
 static void state_changed_cb (GstBus *bus, GstMessage *msg, CustomData *data) {
   GstState old_state, new_state, pending_state;
   gst_message_parse_state_changed (msg, &old_state, &new_state, &pending_state);
@@ -163,13 +138,11 @@ static void state_changed_cb (GstBus *bus, GstMessage *msg, CustomData *data) {
     data->state = new_state;
     g_print ("State set to %s\n", gst_element_state_get_name (new_state));
     if (old_state == GST_STATE_READY && new_state == GST_STATE_PAUSED) {
-      /* For extra responsiveness, we refresh the GUI as soon as we reach the PAUSED state */
       refresh_ui (data);
     }
   }
 }
 
-/* Extract metadata from all the streams and write it to the text widget in the GUI */
 static void analyze_streams (CustomData *data) {
   gint i;
   GstTagList *tags;
@@ -178,11 +151,9 @@ static void analyze_streams (CustomData *data) {
   gint n_video, n_audio, n_text;
   GtkTextBuffer *text;
 
-  /* Clean current contents of the widget */
   text = gtk_text_view_get_buffer (GTK_TEXT_VIEW (data->streams_list));
   gtk_text_buffer_set_text (text, "", -1);
 
-  /* Read some properties */
   g_object_get (data->playbin, "n-video", &n_video, NULL);
   g_object_get (data->playbin, "n-audio", &n_audio, NULL);
   g_object_get (data->playbin, "n-text", &n_text, NULL);

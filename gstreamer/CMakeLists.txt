@@ -45,3 +45,11 @@ foreach(TUTORIAL_SOURCE ${PLAYBACK_TUTORIAL_SOURCES})
     target_link_libraries(playback_${TUTORIAL_NAME} ${GSTREAMER_LIBRARIES} ${GTK3_LIBRARIES} 
                                 ${GSTREAMER_AUDIO_LIBRARIES} ${GSTREAMER_PBUTILS_LIBRARIES})
 endforeach()
+
+add_executable(test_rtsp test/test_rtsp.c)
+target_link_libraries(test_rtsp ${GSTREAMER_LIBRARIES} ${GTK3_LIBRARIES} 
+                        ${GSTREAMER_AUDIO_LIBRARIES} ${GSTREAMER_PBUTILS_LIBRARIES})
+
+add_executable(device2udp test/device2udp.c)
+target_link_libraries(device2udp ${GSTREAMER_LIBRARIES} ${GTK3_LIBRARIES} 
+                        ${GSTREAMER_AUDIO_LIBRARIES} ${GSTREAMER_PBUTILS_LIBRARIES})

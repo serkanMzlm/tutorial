@@ -5,13 +5,7 @@ int main (int argc, char *argv[]) {
     GstBus *bus;
     GstMessage *msg;
 
-    gst_init(&argc, &argv); // Tüm iç yapıları başlatır.
-
-    /*
-    * gst_parse_launch: multimedya akışlarını yönetmek için kullanılır
-    * source kısmından sink kısmına kadar her şeyi içeren pipeline kısmıdır.
-    * playbin: mediayi oynatmak için gerekli olan tüm unsurları oluşturur ve bağlar.
-    */ 
+    gst_init(&argc, &argv); 
     pipeline = gst_parse_launch("playbin uri=https://gstreamer.freedesktop.org/data/media/sintel_trailer-480p.webm", NULL);
     
     /*
@@ -23,12 +17,7 @@ int main (int argc, char *argv[]) {
     */
     gst_element_set_state(pipeline, GST_STATE_PLAYING);
 
-    bus = gst_element_get_bus(pipeline); // pipeline alır.
-
-    /*
-    * Pipeline üzernde bir hata oluşması veya EOS  
-    * olana kadar çalışmaya devam eder
-    */
+    bus = gst_element_get_bus(pipeline);
     msg = gst_bus_timed_pop_filtered(bus, GST_CLOCK_TIME_NONE,
                                         GST_MESSAGE_ERROR | GST_MESSAGE_EOS);
     if (GST_MESSAGE_TYPE (msg) == GST_MESSAGE_ERROR) {
