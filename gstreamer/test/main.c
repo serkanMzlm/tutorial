@@ -16,7 +16,7 @@ int main(int argc, char* argv[]){
     
     gst_init(&argc, &argv);
     data.pipeline = gst_pipeline_new("rtsp_to_udp");
-    data.source   = gst_element_factory_make("rtspsrc" "source");
+    data.source   = gst_element_factory_make("rtspsrc", "source");
     data.sink     = gst_element_factory_make("udpsink", "sink");
 
     int isReady = !data.pipeline || !data.source || !data.sink;
@@ -30,7 +30,7 @@ int main(int argc, char* argv[]){
     g_object_set(G_OBJECT(data.sink), "host", "10.223.9.9", "port", 3000, NULL);
 
     gst_bin_add_many(GST_BIN(data.pipeline), data.source, data.sink, NULL);
-    if (!gst_element_link_many(data.source, data.sink, NULL)) {
+    if (!gst_element_link_many(data.source, data.sink, NULL) != TRUE) {
         g_printerr("Elements could not be linked.\n");
         gst_object_unref(data.pipeline);
         return -1;

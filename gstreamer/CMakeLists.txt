@@ -7,17 +7,17 @@ find_package(GTK REQUIRED)
 pkg_check_modules(GSTREAMER REQUIRED gstreamer-1.0)
 pkg_check_modules(GSTREAMER_AUDIO REQUIRED gstreamer-audio-1.0)
 pkg_check_modules(GSTREAMER_PBUTILS REQUIRED gstreamer-pbutils-1.0)
-pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
+# pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
 
 set(BASIC_PATH "${PROJECT_SOURCE_DIR}/basic/")
 set(PLAYBACK_PATH "${PROJECT_SOURCE_DIR}/playback/")
 
-include_directories(${GTK3_INCLUDE_DIRS}
+include_directories( # ${GTK3_INCLUDE_DIRS}
                     ${GSTREAMER_INCLUDE_DIRS}
                     ${GSTREAMER_AUDIO_INCLUDE_DIRS}
                     ${GSTREAMER_PBUTILS_INCLUDE_DIRS})
 
-link_directories(${GTK3_LIBRARY_DIRS}
+link_directories( # ${GTK3_LIBRARY_DIRS}
                  ${GSTREAMER_LIBRARY_DIRS}
                  ${GSTREAMER_AUDIO_LIBRARY_DIRS}
                  ${GSTREAMER_PBUTILS_LIBRARY_DIRS})
