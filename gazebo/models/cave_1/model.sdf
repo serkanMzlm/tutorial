@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sdf version="1.8">
+    <model name="cave_1">
+        <link name="link">
+            <pose>0 0 2 1.57 0 0</pose>
+            
+            <collision name="collision">
+                <laser_retro>0</laser_retro>
+                <max_contacts>10</max_contacts>
+                <pose>0 0 0 0 -0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>meshes/untitled.dae</uri>
+                    </mesh>
+                </geometry>
+            </collision>
+
+            <visual name="visual">
+                <pose>0 0 0 0 -0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>meshes/untitled.dae</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+
+        </link>
+    </model>
+</sdf>
+
+
