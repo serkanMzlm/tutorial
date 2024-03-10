@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <cassert>
 
 int main()
 {
@@ -7,7 +7,8 @@ int main()
     int b = 011;
     int c = 0x11;
     int d = 0b11;
-
+    int x = 12, y = 12;
+    assert(x == y);
     std::cout << "a: " << a << std::endl;
     std::cout << "b: " << b << std::endl;
     std::cout << "c: " << c << std::endl;
@@ -17,5 +18,6 @@ int main()
     std::cout << std::oct << "b: " << b << std::endl;
     std::cout << std::hex << "c: " << c << std::endl;
     std::cout << "d: " << d << std::endl;
+
 
 }
