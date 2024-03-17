@@ -15,8 +15,10 @@ int main()
     std::cout << data[1] << '\n';
     std::cout << data[3] << '\n';
     std::cout << data[5] << '\n';
+    std::cout << data.at(1) << '\n';
 
-    std::cout << "data vector size: " << data.size() << std::endl;
+    std::cout << "data vector size: " << data.size() << std::endl;  
+    std::cout << "Capacity: " << data.capacity() << " Length:"	<< data.size() << '\n';
 
     return 0;
 }
