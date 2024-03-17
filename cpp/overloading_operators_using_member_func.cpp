@@ -1,32 +1,34 @@
 #include <iostream>
 
-class Cents
+class Point
 {
 private:
-    int m_cents {};
+    double m_x {};
+    double m_y {};
+    double m_z {};
 
 public:
-    Cents(int cents)
-        : m_cents { cents } { }
+    Point(double x=0.0, double y=0.0, double z=0.0)
+        : m_x { x }, m_y { y }, m_z { z }
+    {
+    }
 
-    // Overload Cents + int
-    Cents operator+(int value) const;
-
-    int getCents() const { return m_cents; }
+    friend std::ostream& operator<< (std::ostream& out, const Point& point);
 };
 
-// note: this function is a member function!
-// the cents parameter in the friend version is now the implicit *this parameter
-Cents Cents::operator+ (int value) const
+std::ostream& operator<< (std::ostream& out, const Point& point)
 {
-    return Cents { m_cents + value };
+    // Since operator<< is a friend of the Point class, we can access Point's members directly.
+    out << "Point(" << point.m_x << ", " << point.m_y << ", " << point.m_z << ")";
+
+    return out;
 }
 
 int main()
 {
-	const Cents cents1 { 6 };
-	const Cents cents2 { cents1 + 2 };
-	std::cout << "I have " << cents2.getCents() << " cents.\n";
+    Point point1 { 2.0, 3.0, 4.0 };
 
-	return 0;
+    std::cout << point1;
+
+    return 0;
 }
