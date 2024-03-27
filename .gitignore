@@ -4,3 +4,4 @@ log
 **.db
 **/settings.json
 *.o
+**/build**
