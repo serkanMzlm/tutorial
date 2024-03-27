@@ -5,3 +5,4 @@ log
 **/settings.json
 *.o
 **/build**
+**/CMakeLists.txt.user

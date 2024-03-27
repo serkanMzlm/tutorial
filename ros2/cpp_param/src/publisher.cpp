@@ -1,6 +1,6 @@
 #include "rclcpp/rclcpp.hpp"
 #include "example_interfaces/msg/string.hpp"
-#define FREQ 10
+#define FREQ 1
 
 // using namespace std::chrono_literals  // 1s gibi kavramların sistemde doğrudan kullanılmasını sağlarız
 using string_msg = example_interfaces::msg::String;
@@ -19,7 +19,13 @@ public:
     
 private:
     void publisherCallback(){
-        RCLCPP_INFO(this->get_logger()," Hello");
+        // RCLCPP_INFO(this->get_logger()," Hello");
+        rclcpp::Parameter deneme;
+        if(this->get_parameter("number", deneme)){
+            RCLCPP_INFO(this->get_logger()," True %d", deneme.as_int());
+        }else{
+            RCLCPP_INFO(this->get_logger()," False %d", deneme);
+        }
         string_msg msg;  // auto msg = string_msg;
         msg.data = std::string(" Hello ");
         publisher_->publish(msg);
