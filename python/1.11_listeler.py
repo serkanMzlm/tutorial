@@ -2,9 +2,10 @@
 
 liste = ["a","b",1,2,3,12.20]
 ad = input("adiniz : ")
-print ("adiniz : ",ad)
-print (list(ad)) # karakter dizilerini kelime kelime listeler
-print  (liste)
+print("adiniz : ",ad)
+print(list(ad)) # karakter dizilerini kelime kelime listeler
+print(liste)
+print(len(liste)) #Değişken uzunluğunu verir.
 liste[2] = "c" #ya da liste = ["c"]+liste listede degisiklik yapma 
 print (liste)
 liste =liste + ["asd"] # listeye ekleme yapma 
@@ -15,10 +16,10 @@ liste2 = [i for i in range (100)]
 print ( liste2)
 
 liste.append(ad) # listeye ekleme her seferinde bir sey ekler + ile ayni anlam
-print (liste)
+print(liste)
 
 liste.extend(liste2) #append ile ayni tek farki tek seferde birden fazla ekleme yapailmesi
-print (liste)
+print(liste)
 
 del liste[5:]
 print (liste)
@@ -47,3 +48,8 @@ print (liste3)
 
 liste3.clear() #listeyi temizler
 print (liste3)
+
+sayilar = [[0, 10], [6, 60], [12, 54], [67, 99]]
+for i in sayilar:
+    print(i[0], i[1]) # ya da print(*i)
+    print(*i)

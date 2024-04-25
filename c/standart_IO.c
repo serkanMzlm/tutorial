@@ -2,23 +2,27 @@
 
 int number;
 char ch;
+char mem;
 char name[20];
 
 int main(){
   printf("Enter a char: ");
   ch = getchar();
   putchar(ch);  
-  while (getchar() != '\n') { // Tampon belleği boşaltmak için yapılır.
-      continue;
+  
+  // Tampon belleği boşaltmak için yapılır.
+  // putchar sadece bellekte bulunan ilk kısmı
+  // alır. kalan kısımları bu şekilde boşaltılabilir.
+  printf("\n________________________________\n");
+  while ((mem = getchar()) != '\n') { 
+    printf("free: %c\n", mem);
+    continue;  
   }
-  printf("\nchar : %c\n", getchar());
-  printf("Enter a number: ");
+
+  printf("Enter a char: ");
+  printf("char : %c\nEnter a number: ", getchar());
   scanf("%d", &number);
   printf("number: %d\n", number);
-
-  while (getchar() != '\n') {
-        continue;
-  }
   puts("what is your name: ");
   fgets(name, sizeof(name), stdin);
   puts(name);
