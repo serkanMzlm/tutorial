@@ -1,6 +1,9 @@
-
 #swap (degiskenlerin degerlerini degistirmesi)
-# a=b=c=10 üç değerede 10 atar
+
+a = b = c = 10 #üç değerede 10 atar
+
+d, e, f = 1, 2, 3 
+g, h, *other = [1, 2, 3, 4, 5, 6, 7, 8] # Bu kısımda ilk iki değer sırası ile g ve h ye atanır kalanlar liste olarak other atanır
 
 ilk_deger = 150
 iki_deger = 100
