@@ -21,3 +21,9 @@ print("\na2 shape:", a2.shape, "\n" , a2,
 a3 = np.random.randint(5, size=(4, 3))
 a4 = np.random.randint(5, size=(3, 2))
 print("\n\n",np.dot(a3, a4))
+
+print("\n", "****"*7, "\n")
+
+a5 = np.random.randint(1, 10, (3, 4))
+a6 = np.random.randint(1, 10, (3, 4))
+print(a5, a6, a5 >= a6, sep="\n")
