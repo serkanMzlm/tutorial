@@ -28,7 +28,6 @@ ax.set(title="Car",
     ylabel="Odometer (KM)")
 ax.axhline(car_sales["Odometer(km)"].mean(),
            linestyle="--")
-print()
 ax.legend(*scatter.legend_elements(), title="Target" )
-# ax.legend(["Odometer (KM)"], title="Target")
+ax.set_ylim([10000, 150000])
 plt.show()
