@@ -6,3 +6,4 @@ log
 *.o
 **/build**
 **/CMakeLists.txt.user
+**/*.ipynb
