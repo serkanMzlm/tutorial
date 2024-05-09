@@ -5,16 +5,14 @@ X: Yapay zeka için girdi fonksiyonumu belirtir.
 Y: X değişkeninden tahmin edilmeye çalışılan değerleri tutar. 
 """
 
-import sys
 import pandas as pd
 import pickle
 
 # Sınıflandırma için kullanılır
-from sklearn.ensemble import RandomForestClassifier as rfc 
+from sklearn.ensemble import RandomForestClassifier 
 # Modeli eğiştmek için datayı bölmek vs gibi işlemler için kullanılır
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
-from sklearn.ensemble import RandomForestClassifier
 
 from myLib.debug import debug
 
@@ -29,7 +27,7 @@ debug(2, X.head())
 debug(2, y.head())
 
 # 2. adım "Choose the right estimator/algorithm for our problems"
-clf = rfc(n_estimators=100)
+clf = RandomForestClassifier(n_estimators=100)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2) # %20 test verisi olucak
 debug(3, clf.get_params())
 clf.fit(X_train, y_train)
@@ -44,6 +42,13 @@ print(f"Kontrol Seti Doğruluğu: {clf.score(X_test, y_test) * 100:.2f}%") # Set
 print("--"*30)
 print(classification_report(y_test, y_preds))  # Aynı şekilde bize model hakkında bilgiler verir
 print("--"*30)
+
+#           Tahmin Edilen
+#       Negatif    Pozitif
+# Gerçek Negatif   TN         FP
+# Gerçek Pozitif   FN         TP
+# Bu çıktıda F ile başlayan yanlış tahmin sayısını ifade eder
+# örnek olarak gerçekte pozitif olup negatif değer ifade etmek için FN 
 print(confusion_matrix(y_test, y_preds))
 print(f"Kontrol Seti Doğruluğu: {accuracy_score(y_test, y_preds) * 100:.2f} %")
 print("--"*30)
