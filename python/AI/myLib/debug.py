@@ -15,6 +15,7 @@ flag = args.level
 def debug(id, text):
     if id == flag:
         print(text)
+        print("---"*20)
 
 # argparse kullanıldığı için gereksiz
 # def get_argv():
