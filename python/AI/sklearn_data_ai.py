@@ -1,4 +1,4 @@
-#!/bin/usr/python3
+#!/usr/bin/python3
 
 """
 Farklı modeller Coefficient of Determination değerleri kıyaslaması
