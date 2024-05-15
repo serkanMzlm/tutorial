@@ -7,3 +7,4 @@ log
 **/build**
 **/CMakeLists.txt.user
 **/test.ipynb
+**/**.json
