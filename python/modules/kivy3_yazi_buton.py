@@ -7,7 +7,6 @@ from kivy.uix.textinput import  TextInput
 
 class pg(App):
     def build(self):
-       
         duzen=BoxLayout(orientation = "vertical")
         ilks = BoxLayout()
         ikis = BoxLayout()
