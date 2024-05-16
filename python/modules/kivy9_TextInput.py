@@ -18,7 +18,7 @@ class Program(App):
         self.sifre = Label(text = "Şifre")
         self.sifreKutu = TextInput(multiline=False, #enter basılınca alt satıra gecmıyıcek
                                    password=True, #yazılanlar mask bulunan karakter gözükücek
-                                   password_mask="_") # default olarak * dır 
+                                   password_mask="*") # default olarak * dır 
 
         self.buton = Button(text = "Giriş Yap",
                             background_color=[0.1,1,.5,1])

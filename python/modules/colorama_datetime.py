@@ -16,19 +16,15 @@ print(Style.RESET_ALL)
 now = datetime.now() # ya da datetime.todey()
 
 # Verilerin daha okunaklı olması için kullanılır
-date = datetime.ctime(now) # ya da datetime.strftime(suan,"%c")
+date = datetime.ctime(now) # ya da datetime.strftime(now,"%c")
 print("now: ", now, "\ndate: ",date)
 
-# %a: Hafta gününün kısaltılmış adı, %A: Tam yazımları
-# %b: Ayın kısaltılmış adı, %B: Tam yazımı
+# %x: Tarih bilgisi, %X: Saat bilgisi
 # %c: Tam tarih, saat ve zaman bilgisi
-# %d: Sayı değerli bir karakter dizisi olarak gün
-# %j: Selli bir tarihin, yılın kaçıncı gününe denk geldiğini gösteren 1-366 arası bir sayı
+# %d, gün bilgisi | %m, ay bilgisi
 # %m: Sayı değerli bir karakter dizisi olarak ay
-# %U: Belli bir tarihin yılın kaçıncı haftasına geldiğini gösteren 0-53 arası bir sayı
-# %y: Yılın son iki rakamı, %Y: Tam yazımı
-# %x: Tam tarih bilgisi, %X: Tam saat bilgisi
+# %a, gün - %b, ay - %y, yıl kısa yazımları | %A, %B, %Y tam yazımları 
+# %j, yıllın kaçıncı günü (1 - 366) - %U yıllın kaçıncı haftası (0 - 53)
 
 # now.year - now.month - now.day - now.hour
 # now.minute - now.second - now.microsecond
-
