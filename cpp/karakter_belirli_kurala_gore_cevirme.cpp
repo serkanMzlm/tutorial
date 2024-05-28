@@ -1,5 +1,10 @@
 #include <iostream>
 
+/*
+* text değişkeninin içinde bulunan verinin karakterlerin sadece ingilice 
+* harflerin konumu terslenmesi bu karakterler dışındakiler konumu değişmeyecek
+* Örnek: "ada1sa" -> "asa1da"
+*/
 typedef struct
 {
     int upper_start;
