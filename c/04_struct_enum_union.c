@@ -1,26 +1,35 @@
 #include <stdio.h>
 
-typedef enum { STATE_X, STATE_Y, STATE_Z, STATE_ALL}State_t;
+typedef enum
+{
+  STATE_X,
+  STATE_Y,
+  STATE_Z,
+  STATE_ALL
+} State_t;
 
 State_t state_t;
 
-struct People{
+struct People
+{
   char name[20];
   int age;
   float weight;
 };
 
-typedef struct {
+typedef struct
+{
   char name[20];
   int age;
   float weight;
 } People_2;
 
-typedef union { 
-//Bu kalıp sayesinde bellekte sadece bir alan ayırıp bu alanı istersek x y z 
-// istersek de state dizini ile erişebiliriz. Akılda kalıcı olması için state 
-// verilerine enum yazdığımız kelimelerle erişebiliriz.
-  struct{
+// Bellekte sadece bir alan ayırıp bu alana x y z veya state[] ile
+// erişilebilir state[] verilerine enum verileri ile erişilebilir.
+typedef union
+{
+  struct
+  {
     int x;
     int y;
     int z;
@@ -28,11 +37,12 @@ typedef union {
   int state[STATE_ALL];
 } State_s;
 
-struct People people = {"Ali", 35, 70.0}; //İlk değer ataması
-People_2 *people_2 = {"mert", 10, 40}; // typeef sayesinden struct yazmaya gerek yok
-State_s state_1 = {1 , 2, 4};
+struct People people = {"Ali", 35, 70.0}; // İlk değer ataması
+People_2 *people_2 = {"mert", 10, 40};    // typedef olduğu için struct yazmaya gerek yok
+State_s state_1 = {1, 2, 4};
 
-int main(){
+int main()
+{
   printf("name: %s\n", people.name);
   printf("name: %s\n", people_2->name); // pointer olduğu için -> ile erişilir.
   printf("name: %s\n", (*people_2).name);
