@@ -3,11 +3,13 @@
 
 void process_node(yaml_parser_t *parser, int depth);
 
-int main() {
+int main()
+{
     char *file_path = "test.yaml";
     FILE *source = fopen(file_path, "rb");
 
-    if (!source) {
+    if (!source)
+    {
         perror("Error opening file");
         return 1;
     }
@@ -24,21 +26,30 @@ int main() {
     return 0;
 }
 
-void process_node(yaml_parser_t *parser, int depth) {
+void process_node(yaml_parser_t *parser, int depth)
+{
     yaml_event_t event;
     int storage = 0; // 0 for key, 1 for value
 
-    while (1) {
+    while (1)
+    {
         yaml_parser_parse(parser, &event);
 
-        if (event.type == YAML_SCALAR_EVENT) {
+        if (event.type == YAML_SCALAR_EVENT)
+        {
             printf("%*s- %s: ", depth * 2, "", event.data.scalar.value);
             storage = 1;
-        } else if (event.type == YAML_SEQUENCE_START_EVENT) {
+        }
+        else if (event.type == YAML_SEQUENCE_START_EVENT)
+        {
             process_node(parser, depth + 1);
-        } else if (event.type == YAML_SEQUENCE_END_EVENT) {
+        }
+        else if (event.type == YAML_SEQUENCE_END_EVENT)
+        {
             break;
-        } else if (event.type == YAML_SCALAR_EVENT && storage) {
+        }
+        else if (event.type == YAML_SCALAR_EVENT && storage)
+        {
             printf("%s\n", event.data.scalar.value);
             storage = 0;
         }
